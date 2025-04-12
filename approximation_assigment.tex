@@ -3,6 +3,7 @@
 \usepackage[a4paper, margin=1.2in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{listings}
 
 \usepackage{hyperref}
 
@@ -145,7 +146,10 @@ As long as we set $f_s > 2B$, however, the signal is able to be perfectly recove
 %explanation of code
 %the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
 %here dont put all of the different frequencies because we do that in the discussion
-To implement the process of sampling in Python, I begin by defining a function ``generate\_signal'' which generates a sine wave (a continuous-time signal) of desired frequency.
+To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
+\begin{lstlisting}[language = Python]
+    s
+\end{lstlisting}
 %insert code block here
 Here, I simply create a time array with 10000 elements, and then apply the sine function with the given frequency to the 10000 time values. 
 Users can set the ``plot'' parameter to ``True'' if they wish a plot of the original continuous-time signal to be displayed.
