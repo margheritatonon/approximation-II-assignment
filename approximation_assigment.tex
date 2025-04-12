@@ -55,8 +55,30 @@ For example, if we consider a sine wave with frequency 5 Hertz, $\sin(2\pi \cdot
 
 %do i explain quantization here?
 
-In the time domain, a sampled signal looks like discrete spikes (Figure 1). To visualize what this looks like in the frequency domain, we make use of the Convolution Theorem.
-The Convolution Theorem states that 
+In the time domain, a sampled signal looks like discrete spikes (Figure 1). 
+\begin{figure}
+    \includegraphics[width=\linewidth]{ogvssampled_BIG.png}
+    \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 5 Hertz}
+    \label{fig:grid}
+
+\end{figure}
+To visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
+
+The Inverse Convolution Theorem states that if we have two functions $x(t)$ and $h(t)$ whose Fourier Transforms $\mathcal{F}(x(t))$ and $\mathcal{F}(h(t))$ are absolutely integrable in the frequency domain,
+then 
+\begin{center}
+    \begin{math}
+        X(f) * H(f) = \mathcal{F}(x(t) \cdot h(t))
+    \end{math}  
+\end{center}
+%if $x(t)$ and $h(t)$ are two absolutely integrable functions in $\mathcal{L}^1(\mathbb{R})$, and if their Fourier transforms $\mathcal{F}(x(t))$ and $\mathcal{F}(h(t))$ exist and are well defined,
+
+Therefore, because we can express sampling as $x_s(t) = x(t) \cdot \sum_{-\infty}^{\infty} \delta (t-nT_s)$ in the time domain, the Inverse Convolution Theorem tells us that %i dont know if here its convolution thm or inverse convolution thm
+\begin{center}
+    \begin{math}
+        \mathcal{F}\left(x(t) \cdot \sum_{-\infty}^{\infty} \delta (t-nT_s)\right) = \mathcal{F}(x(t)) * \mathcal{F}\left( \sum_{-\infty}^{\infty} \delta (t-nT_s) \right)
+    \end{math}  
+\end{center}
 
 
 %some context into the problem, theory
@@ -73,5 +95,9 @@ The Convolution Theorem states that
 %different initial frequencies, different sampling frequencies based on shannon nyquist thm
 
 \section{Conclusion}
+
+\begin{thebibliography}{9}
+    \bibitem{1}[]
+\end{thebibliography}
 
 \end{document}
