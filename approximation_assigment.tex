@@ -29,14 +29,34 @@ Sampling refers to the process of converting an analog signal into a digital sig
     \end{math}  
 \end{center}
 where $n$ represents discrete time sampling points and $T_s$ represents the sampling period, such that the sampling frequency $f_s = \frac{1}{T_s}$.
-Sampling essentially allows us to discretize a continuous input.
 
-In practice, sampling continuous time signals facilitates handling and working with them. After sampling is done, it is natural that the signal must be reconstructed in order to recover the original (time continuous) signal.
+Sampling can also be represented as 
+\begin{center}
+    \begin{math}
+        x_s(t) = x(t) \sum_{-\infty}^{\infty} \delta (t-nT_s)
+    \end{math}  
+\end{center}
+where $x_s(t)$ is the sampled points, and $\delta$ is the dirac delta distribution, taking value 1 if $t=nT_s$ and 0 otherwise.
+Therefore, it is clear that when $t=nT_s$, $x_s(t) = x(t)$; otherwise $x_s(t) = 0$. 
+
+In practice, sampling allows us to discretize a continuous input, facilitating the handling of signals. After sampling is done, it is natural that the signal must be reconstructed in order to recover the original (time continuous) signal.
 However, recovery is not always perfect -- the Shannon-Nyquist condition must be met.
 %something along the lines of: the key issue is what must the sampling frequency be in order for a signal to be perfectly reconstructed and recovered?
-The Shannon-Nyquist theorem states that 
+
+The Shannon-Nyquist theorem states that a signal can be perfectly reconstructed if the sampling frequency is greater than two times the maximum frequency of the continuous signal:
+\begin{center}
+    \begin{math}
+        f_s > 2B
+    \end{math}  
+\end{center}
+where $B$ is the maximum frequency in Hertz.
+For example, if we consider a sine wave with frequency 5 Hertz, $\sin(2\pi \cdot 5 \cdot t)$, once sampled it can be perfectly reconstructed if the sampling frequency is greater than 10.
+%TODO: need to check what the relationship between B and the max continuous frequency is
 
 %do i explain quantization here?
+
+In the time domain, a sampled signal looks like discrete spikes (Figure 1). To visualize what this looks like in the frequency domain, we make use of the Convolution Theorem.
+The Convolution Theorem states that 
 
 
 %some context into the problem, theory
