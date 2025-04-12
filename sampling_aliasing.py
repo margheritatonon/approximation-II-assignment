@@ -117,7 +117,7 @@ def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
         plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
         plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz) versus Original Signal (frequency {frequency} Hz)")
         plt.legend() #TODO: add a legend location (or specify in the title)
-        plt.show() #TODO: understand why when we have freq = 5 and then sampling freq = 12 (shannon nyquist MET), we do not get the exact same signal.
+        plt.show() #TODO: understand why when we have freq = 5 and then sampling freq = 12 (shannon nyquist MET), we do not get the exact same signal. --> is it because of quantization errors?
 
     return x_s
 
