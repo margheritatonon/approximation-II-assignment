@@ -4,7 +4,7 @@ from scipy.fft import fft, fftfreq
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 5
+sampling_frequency = 12
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
 #time vector from 0 to 2
@@ -70,9 +70,11 @@ t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_freque
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
 #we need to compute the FFT of the signals
 
+#TODO: not sure if this function is going to be useful
 def continuous_fourier_transform():
     pass
 
+#TODO: here there are some bugs with the plot (e.g. at freq = 5, sampling freq = 11)
 def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
     """
     Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
@@ -98,3 +100,5 @@ yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
 
 #RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
+#the signal can be recovered applying a filter --> in time domain this looks like the sinc function
+
