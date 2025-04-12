@@ -72,7 +72,9 @@ then
         \mathcal{F}^{-1} \left(X(f) * H(f) \right) = x(t) \cdot h(t)
     \end{math}  
 \end{center}
-and consequently %but check if there are additional conditions for this --> I think that this has somethign to do with real numbers
+where $*$ is the operation which represents a convolution. %i dont know if i like the syntax "is the operation which represents a convolution" --> is the convolution operator (but maybe wrong)?
+Consequently,
+%but check if there are additional conditions for this --> I think that this has somethign to do with real numbers
 \begin{center}
     \begin{math}
         X(f) * H(f) = \mathcal{F}\left(x(t) \cdot h(t)\right)
@@ -117,7 +119,12 @@ To recover the original signal from the sampled signal, we apply an ideal band p
         H(f) = %insert the piecewise function of the band pass filter
     \end{math}  
 \end{center}
-which selects the desired frequencies. We then perform an inverse Fourier Transform on the signal and we will have recovered the original signal. %check that this is true
+
+%1 \; \text{if} \; f_l < f < f_h
+%0 \; \text{otherwise}
+
+which selects the frequencies between $f_l$ and $f_h$ Hertz. %idk if the frequencies are selected or what is selected --> review
+We then perform an inverse Fourier Transform on the signal and we will have recovered the original signal. %check that this is true
 %ALSO give a better description of the filtering
 
 Nonetheless, the frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
@@ -134,13 +141,55 @@ As long as we set $f_s > 2B$, however, the signal is able to be perfectly recove
 %the problem of reconstruction and the need for sufficiently high sampling frequencies
 
 \section{Implementation}
+%TODO: insert code snippets and change the function names to actual code block writing
 %explanation of code
 %the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
 %here dont put all of the different frequencies because we do that in the discussion
-To implement the process of sampling in Python, we begin by defining a function ``'' which generates a sine wave (a continuous-time signal) of desired frequency.
+To implement the process of sampling in Python, I begin by defining a function ``generate\_signal'' which generates a sine wave (a continuous-time signal) of desired frequency.
 %insert code block here
+Here, I simply create a time array with 10000 elements, and then apply the sine function with the given frequency to the 10000 time values. 
+Users can set the ``plot'' parameter to ``True'' if they wish a plot of the original continuous-time signal to be displayed.
 
+Next, I define the ``sample\_signal'' function, which samples the continuous signal at a specified sampling frequency.
+Users can set ``plot\_one'' to ``True'' if they wish to visualize the original signal together with the sampled points, and ``plot\_two'' to True if they wish to just visualize the sampled points.
+%code block 
+%NEED TO EXPLAIN WHAT IS HAPPENING IN THIS CODE BLOCK
 
+Thirdly, I create the ``sampled\_fourier\_transform'' function, which takes as inputs the sampled amplitudes and the sampling frequency, and performs the Fast Fourier Transform of the sampled amplitudes using the ``scipy'' module. %something that u used scipy
+Users can again set the plot parameter to True if they wish to observe the frequencies of the sampled signal in the frequency domain. %something abt this but u have to fix it in the code
+%code block
+
+Finally, I define the ``reconstruction'' function, which 
+
+The sinc function, defined as $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$, is utilized as it is the time domain representation of the ideal band pass filter.
+%in one of the summary sheets you have more about this --> say why u are using it like that? and no convolution or something?
+The sinc function is obtained by taking the inverse Fourier Transform of the ideal band pass filter:
+\begin{center}
+    \begin{math}
+        h(t) = \int_{-\infty}^{\infty} H(f) e^{2\pi i ft} df
+    \end{math}  
+\end{center}
+$H(f)$ is even and real and therefore $e^{2\pi i ft}$ = $\cos(2\pi ft) + i \sin(2\pi ft)$ = $\cos(2\pi ft)$ as the imaginary part is 0.  
+\begin{center}
+    \begin{math}
+        h(t) = \int_{-\infty}^{\infty} H(f) \cos(2\pi ft) df
+    \end{math}  
+\end{center}
+Evaluating this integral,
+\begin{center}
+    \begin{math}
+        h(t) = \frac{1}{\pi t} \left[ \sin(2\pi f_h t) - \sin(2\pi f_l t) \right]
+    \end{math}  
+\end{center}
+This is the difference of two sinc-like functions. 
+%TODO: understand the link between the difference of two sinc like functions and the following sentence that we can just recover the signal like this:
+The signal $x(t)$ can therefore be recovered in the following way:
+\begin{center}
+    \begin{math}
+        x(t) = \sum_{-\infty}^{\infty} x(nT) \text{sinc}\left( \frac{t}{T} - n \right)
+    \end{math}  
+\end{center}
+which is the approach implemented in the ``reconstruction'' function. 
 
 \section{Discussion}
 %results of code
@@ -149,11 +198,14 @@ To implement the process of sampling in Python, we begin by defining a function 
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
 
-\begin{thebibliography}{9}
-    \bibitem{1}[]
+\begin{thebibliography}{9} %TODO turn to MLA
+    \bibitem{1} https://realpython.com/python-scipy-fft/
 \end{thebibliography}
 
 \section{Appendix}
-* Access the GitHub repository \href{https://github.com/margheritatonon/approximation-II-assignment}{here}.
+\begin{enumerate}
+    \item Access the GitHub repository with all code \href{https://github.com/margheritatonon/approximation-II-assignment}{here}.
+\end{enumerate}
+
 
 \end{document}
