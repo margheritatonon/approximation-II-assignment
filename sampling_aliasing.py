@@ -76,7 +76,7 @@ def continuous_fourier_transform():
     pass
 
 #TODO: here there are some bugs with the plot (e.g. at parameter values freq = 5, sampling freq = 11)
-#TODO: make it so that we see the copies of the samples instead of just the original signal, so we can see aliasing in action
+
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
     Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
@@ -123,6 +123,8 @@ yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates
 
 #RECONSTRUCTION
 #TODO: create a function that plots only the filtered frequencies, but not the other "aliased" ones --> and if we do have aliasing show what the output of the ideal filter is
+#I think here I meant in the frequency domain
+
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
 def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
