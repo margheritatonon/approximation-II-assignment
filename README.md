@@ -1,12 +1,12 @@
 # Approximation Assignment
 
 ## Exploring Aliasing and the Sampling Theorem
-Illustrate the effects of sampling and aliasing:
+This assignment aims to illustrate the effects of sampling and aliasing, by:
 
-* Generate a continuous-time signal.
-* Sample it at various rates (above and below the Nyquist rate).
-* Apply the Fourier Transform to analyze the sampled signal.
-* Visualize aliasing and proper reconstruction techniques.
+* Generating a continuous-time signal.
+* Sampling it at various rates (above and below the Nyquist rate).
+* Applying the Fourier Transform to analyze the sampled signal.
+* Visualizing aliasing and proper reconstruction techniques.
 
 
 ## How to use:
