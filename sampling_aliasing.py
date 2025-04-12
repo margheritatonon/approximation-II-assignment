@@ -4,7 +4,7 @@ from scipy.fft import fft, fftfreq
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 12
+sampling_frequency = 7
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
 #time vector from 0 to 2
@@ -74,7 +74,7 @@ t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_freque
 def continuous_fourier_transform():
     pass
 
-#TODO: here there are some bugs with the plot (e.g. at freq = 5, sampling freq = 11)
+#TODO: here there are some bugs with the plot (e.g. at parameter values freq = 5, sampling freq = 11)
 def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
     """
     Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
@@ -101,13 +101,24 @@ yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
 #RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
-def sinc_function(x_sampled, t_sampled, t_s, plot = False):
+def sinc_function(x_sampled, t_sampled, x_continuous, t_s, plot = False):
     """
-    Returns the reconstructed signal from the sampled signal x_sampled, using t_sampled () and t_s ().
+    Returns the reconstructed signal from the sampled signal x_sampled, using t_sampled (the discrete timesteps of the sampled signal) and t_s (the time axis that we want the signal to be reconstructed on).
     If plot = True, plots the reconstructed signal along with the original signal and sampled points.
     """
+
     Fs = 1/t_sampled[1]
     x_s = np.zeros(len(t_s))
     for n in range(0, len(t_sampled)):
         x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter 
+    
+    if plot == True:
+        plt.plot(t_s, x_s, label = "Reconstructed")
+        plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
+        plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz) versus Original Signal (frequency {frequency} Hz)")
+        plt.legend() #TODO: add a legend location (or specify in the title)
+        plt.show() #TODO: understand why when we have freq = 5 and then sampling freq = 12 (shannon nyquist MET), we do not get the exact same signal.
+
     return x_s
+
+x_s = sinc_function(x_sampled, t_sampled, x_continuous, t_continuous, plot = True)
