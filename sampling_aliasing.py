@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.fft
+from scipy.fft import fft, fftfreq
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 1
+sampling_frequency = 5
 
 #time vector from 0 to 2
 def generate_signal(t_end, frequency, plot = False):
@@ -62,15 +62,32 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
         plt.show()
     return t_sampled, x_sampled
 
-sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True)
-
+t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True)
 
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
+#we need to compute the FFT of the signals
+
 def continuous_fourier_transform():
     pass
 
-def sampled_fourier_transform():
-    pass
+def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
+    """
+    Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
+    If plot == True, plots the frequency domain plot.
+    """
+    n = len(x_sampled)
+    print(n)
+    yf = fft(x_sampled)
+    print(yf)
+    xf = fftfreq(n, 1 / sampling_freq)
+    if plot == True:
+        plt.plot(xf, np.abs(yf)) #we need to do np.abs on yf because its values are complex
+        plt.title("Frequency Domain Representation of Sampled Signal")
+        plt.xlabel("Frequency (Hertz)")
+        plt.show()
+    return yf, xf
 #the representation of our signal in the frequency domain is
 #1/Ts * the sum from n = -inf to inf of  X(f - n/Ts) 
 #and this is why the representation of the sampled signal in the frequency domain is the fourier transform of the original function but duplicated and shifted over
+
+yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
