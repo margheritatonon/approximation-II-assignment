@@ -65,4 +65,12 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
 sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True)
 
 
-#Applying the Fourier Transform to visualize the sampled signal
+#Applying the Fourier Transform to visualize the continuous and the sampled signal
+def continuous_fourier_transform():
+    pass
+
+def sampled_fourier_transform():
+    pass
+#the representation of our signal in the frequency domain is
+#1/Ts * the sum from n = -inf to inf of  X(f - n/Ts) 
+#and this is why the representation of the sampled signal in the frequency domain is the fourier transform of the original function but duplicated and shifted over
