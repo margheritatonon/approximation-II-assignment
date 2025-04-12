@@ -38,7 +38,7 @@ Sampling can also be represented as
         x_s(t) = x(t) \sum_{-\infty}^{\infty} \delta (t-nT_s)
     \end{math}  
 \end{center}
-where $x_s(t)$ is the sampled points, and $\delta$ is the dirac delta distribution, taking value 1 if $t=nT_s$ and 0 otherwise.
+where $x_s(t)$ is the sampled points, and $\delta$ is the dirac delta distribution, taking value 1 if $t=nT_s$, and 0 otherwise.
 Therefore, it is clear that when $t=nT_s$, $x_s(t) = x(t)$; otherwise, $x_s(t) = 0$. 
 
 In practice, sampling allows us to discretize a continuous input, facilitating the handling of signals. After sampling is done, it is natural that the signal must be reconstructed in order to recover the original (time continuous) signal.
@@ -63,10 +63,16 @@ In the time domain, a sampled signal looks like discrete spikes (Figure 1).
     \label{fig:grid}
 
 \end{figure}
-The Fourier Transform allows us to transition from the time domain into the frequency domain. To visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
+The Fourier Transform allows us to transition from the time domain into the frequency domain, and therefore, to visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
 
 The Inverse Convolution Theorem states that if we have two functions $x(t)$ and $h(t)$ whose Fourier Transforms $\mathcal{F}(x(t))$ and $\mathcal{F}(h(t))$ are absolutely integrable in the frequency domain,
 then 
+\begin{center}
+    \begin{math}
+        \mathcal{F}^{-1} \left(X(f) * H(f) \right) = x(t) \cdot h(t)
+    \end{math}  
+\end{center}
+and consequently %but check if there are additional conditions for this --> I think that this has somethign to do with real numbers
 \begin{center}
     \begin{math}
         X(f) * H(f) = \mathcal{F}\left(x(t) \cdot h(t)\right)
@@ -81,7 +87,7 @@ Therefore, because we can express sampling as $x_s(t) = x(t) \cdot \sum_{-\infty
     \end{math}  
 \end{center}
 
-Therefore, to visualize sampling in the frequency domain we must convolve the Fourier Transform of the input signal with the Fourier Transform of $\sum_{-\infty}^{\infty} \delta (t-nT_s)$, known as the Dirac comb. %not sure this is true
+To visualize sampling in the frequency domain we must therefore convolve the Fourier Transform of the input signal with the Fourier Transform of $\sum_{-\infty}^{\infty} \delta (t-nT_s)$, known as the Dirac comb. %not sure this is true
 Using properties of the Fourier Transform, Dirac Delta distribution, \_\_\_, %that weird theorem that u can exchange the sum w the integral
 and the Poisson summation formula, 
 we obtain that 
@@ -103,7 +109,7 @@ Convolution of a function with a delta function shifts the function by the shift
         \mathcal{F}(x(t)) * \mathcal{F}\left( \sum_{-\infty}^{\infty} \delta (t-nT_s) \right) = \frac{1}{T_s} X\left(f - \frac{n}{T_s} \right)
     \end{math}  
 \end{center}
-We can then observe how the representation of a sampled signal in the frequency domain is simply the Fourier Transform of the signal, duplicated and shifted to multiples of the sampling frequency. %CHECK THAT THIS IS TRUE
+We can consequently observe how the representation of a sampled signal in the frequency domain is simply the Fourier Transform of the signal, duplicated and shifted to multiples of the sampling frequency. %CHECK THAT THIS IS TRUE
 
 To recover the original signal from the sampled signal, we apply an ideal band pass filter,
 \begin{center}
@@ -114,7 +120,7 @@ To recover the original signal from the sampled signal, we apply an ideal band p
 which selects the desired frequencies. We then perform an inverse Fourier Transform on the signal and we will have recovered the original signal. %check that this is true
 %ALSO give a better description of the filtering
 
-The frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
+Nonetheless, the frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
 When our sampling frequency is ``large enough'', the process of copying and shifting the frequencies occurs at larger intervals, meaning the copied frequencies are more spread out. It is therefore possible to apply an ideal filter to recover the original frequencies. %frequencies or frequency?
 However, if the sampling frequency decreases, the interval between frequencies is not as large and they may overlap. It is therefore no longer possible to apply an ideal filter to recover the original frequencies, as the original signal and the duplicated frequencies overlap.
 This is known as aliasing: the act of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra. %maybe use a diff definition cause this is rly similar to the one on the slides
@@ -128,7 +134,9 @@ As long as we set $f_s > 2B$, however, the signal is able to be perfectly recove
 %the problem of reconstruction and the need for sufficiently high sampling frequencies
 
 \section{Implementation}
-%explanation of code, and I think here you would explain things like the theory behind the sinc function
+%explanation of code
+%the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
+%here dont put all of the different frequencies because we do that in the discussion
 
 
 \section{Discussion}
