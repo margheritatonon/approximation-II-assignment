@@ -7,3 +7,7 @@ Illustrate the effects of sampling and aliasing:
 * Sample it at various rates (above and below the Nyquist rate).
 * Apply the Fourier Transform to analyze the sampled signal.
 * Visualize aliasing and proper reconstruction techniques.
+
+
+### References:
+* https://realpython.com/python-scipy-fft/
