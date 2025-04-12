@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.fft import fft, fftfreq
+from scipy.fft import fft, fftfreq, fftshift
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 7
+sampling_frequency = 11
 t_end = 2
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
@@ -77,10 +77,10 @@ def continuous_fourier_transform():
 
 #TODO: here there are some bugs with the plot (e.g. at parameter values freq = 5, sampling freq = 11)
 #TODO: make it so that we see the copies of the samples instead of just the original signal, so we can see aliasing in action
-def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
+def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
     Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
-    If plot == True, plots the frequency domain plot.
+    If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
     print(n)
@@ -88,16 +88,37 @@ def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
     print(yf)
     xf = fftfreq(n, 1 / sampling_freq)
     if plot == True:
-        plt.plot(xf, np.abs(yf)) #we need to do np.abs on yf because its values are complex
+        magnitude = np.abs(yf)
+        xf_shifted = fftshift(xf)
+        magnitude_shifted = fftshift(magnitude)
+
+        total_span = sampling_freq
+        xf_tiled = []
+        magnitude_tiled = []
+
+        for i in range(-num_duplicates, num_duplicates + 1):
+            xf_tiled.extend(xf_shifted + i * total_span)
+            magnitude_tiled.extend(magnitude_shifted)
+        
+        plt.figure(figsize=(10, 4))
+        plt.plot(xf_tiled, magnitude_tiled)
         plt.title("Frequency Domain Representation of Sampled Signal")
         plt.xlabel("Frequency (Hertz)")
+        plt.grid(True)
+        plt.axvline(x=0, color='gray', linestyle='--', linewidth=1)
         plt.show()
+
+        #plt.plot(xf, np.abs(yf)) #we need to do np.abs on yf because its values are complex
+        #plt.title("Frequency Domain Representation of Sampled Signal")
+        #plt.xlabel("Frequency (Hertz)")
+        #plt.show()
     return yf, xf
+
 #the representation of our signal in the frequency domain is
 #1/Ts * the sum from n = -inf to inf of  X(f - n/Ts) 
 #and this is why the representation of the sampled signal in the frequency domain is the fourier transform of the original function but duplicated and shifted over
 
-yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
+yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
 
 
 #RECONSTRUCTION
