@@ -114,10 +114,11 @@ To recover the original signal from the sampled signal, we apply an ideal band p
 which selects the desired frequencies. We then perform an inverse Fourier Transform on the signal and we will have recovered the original signal. %check that this is true
 %ALSO give a better description of the filtering
 
-However, this frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
-When our sampling frequency is ``large enough'', 
-
-Aliasing is the act of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra. %maybe use a diff definition cause this is rly similar to the one on the slides
+The frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
+When our sampling frequency is ``large enough'', the process of copying and shifting the frequencies occurs at larger intervals, meaning the copied frequencies are more spread out. It is therefore possible to apply an ideal filter to recover the original frequencies. %frequencies or frequency?
+However, if the sampling frequency decreases, the interval between frequencies is not as large and they may overlap. It is therefore no longer possible to apply an ideal filter to recover the original frequencies, as the original signal and the duplicated frequencies overlap.
+This is known as aliasing: the act of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra. %maybe use a diff definition cause this is rly similar to the one on the slides
+As long as we set $f_s > 2B$, however, the signal is able to be perfectly recovered. 
 
 %maybe give an example of aliasing happening, like the one we saw in class?
 
