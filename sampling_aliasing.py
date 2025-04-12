@@ -31,24 +31,38 @@ print(f"len(x_continuous) = {len(x_continuous)}")
 nyquist_shannon_threshold = 2 * frequency 
 print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}")
 
-def sample_signal(x, t, fs, plot = False):
+def sample_signal(x, t, fs, plot_one = False, plot_two = False):
     """
     Samples the continuous time signal x at a rate fs.
     t: the time interval of the sampled signal x
     Returns the time and amplitude arrays of the sampled signal
+    If plot_one == True, plots the continuous signal along with the sampled points.
+    If plot_two == True, plots the sampled points only.
     """
     Ts = 1/fs #defining the sampling period
     t_sampled = np.arange(t[0], t[-1], Ts) #the sampled time points
-    x_sampled = np.interp(t_sampled, t, x) #using 
-    if plot == True:
+    x_sampled = np.interp(t_sampled, t, x) #using np.interp to sample
+
+    if plot_one == True:
         plt.plot(t, x, label = "Continuous")
-        plt.scatter(t_sampled, x_sampled, label = "Sampled", color = "red")
+        #plt.scatter(t_sampled, x_sampled, label = "Sampled", color = "red")
+        plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
         plt.title(f"Sampled Continuous Time Signal with Sampling Frequency {fs} Hz")
         plt.xlabel("Time (s)")
         plt.ylabel("Amplitude")
         plt.grid(True)
         #plt.legend()
         plt.show()
+    if plot_two == True:
+        plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
+        plt.title(f"Sampled Signal with Sampling Frequency {fs} Hz")
+        plt.xlabel("Time (s)")
+        plt.ylabel("Amplitude")
+        plt.grid(True)
+        plt.show()
     return t_sampled, x_sampled
 
-sample_signal(x_continuous, t_continuous, sampling_frequency, plot = True)
+sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True)
+
+
+#Applying the Fourier Transform to visualize the sampled signal
