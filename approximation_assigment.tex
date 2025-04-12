@@ -15,10 +15,12 @@
 \maketitle
 
 \section{Introduction}
-In signal processing, \dots %introduction sentence
+In signal processing, \dots %introduction sentence, context, motivation
 
-An analog signal refers to a signal that varies continuously over time. The complexity of analog signal processing, along with their susceptibility to noise and signal degradation over time as well as their limited reproductibility and scalability, makes them inconvenient to work with in practice. 
+An analog signal refers to a signal that varies continuously over time. 
+The complexity of analog signal processing, their susceptibility to noise and signal degradation over time, as well as their limited reproductibility and scalability makes them inconvenient to work with in practice. 
 Therefore, digital signals are used -- signals that vary discretely over time and can take only a finite number of distinct values.
+%mention advantages of digital signals?
 
 Sampling refers to the process of converting an analog signal into a digital signal. If we let $x(t)$ be a continuous time signal, the sampled signal $x[n]$ is defined as
 \begin{center}
@@ -26,7 +28,16 @@ Sampling refers to the process of converting an analog signal into a digital sig
         x[n] = x(nT_s)
     \end{math}  
 \end{center}
-where $n$ represents, and $T_s$ represents.
+where $n$ represents discrete time sampling points and $T_s$ represents the sampling period, such that the sampling frequency $f_s = \frac{1}{T_s}$.
+Sampling essentially allows us to discretize a continuous input.
+
+In practice, sampling continuous time signals facilitates handling and working with them. After sampling is done, it is natural that the signal must be reconstructed in order to recover the original (time continuous) signal.
+However, recovery is not always perfect -- the Shannon-Nyquist condition must be met.
+%something along the lines of: the key issue is what must the sampling frequency be in order for a signal to be perfectly reconstructed and recovered?
+The Shannon-Nyquist theorem states that 
+
+%do i explain quantization here?
+
 
 %some context into the problem, theory
 %overview of what sampling is, why its used!! important to say why sampling

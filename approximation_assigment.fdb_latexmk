@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1744451336.39359 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1744451336.61254 0
+["pdflatex"] 1744452198.37025 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1744452198.59111 0
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -22,10 +22,12 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1248133631 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty" 1576016050 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
@@ -80,10 +82,10 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1740194047 92935 ab22f987f93038b61e05dc32d7c07157 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1740220808 1928676 6282b037fa4075742b448fcb64c0e6d1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf.cnf" 1740220793.40005 708 85fd07691b6294ba94c59dbc62380410 ""
-  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1744451336.205 1709 89127854743a7e2699cfae8e56935ab9 ""
-  "approximation_assigment.aux" 1744451336.58264 596 b82f0ca723d8c20d8ebe34e86fc7459f "pdflatex"
-  "approximation_assigment.out" 1744451336.58294 402 82914bb69c30e25cad2e3dfa98e29f3e "pdflatex"
-  "approximation_assigment.tex" 1744451336.205 1709 89127854743a7e2699cfae8e56935ab9 ""
+  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1744452198.19275 2432 1f7122b67564c95c80ee34a93f465c27 ""
+  "approximation_assigment.aux" 1744452198.56031 596 b82f0ca723d8c20d8ebe34e86fc7459f "pdflatex"
+  "approximation_assigment.out" 1744452198.56094 402 82914bb69c30e25cad2e3dfa98e29f3e "pdflatex"
+  "approximation_assigment.tex" 1744452198.19275 2432 1f7122b67564c95c80ee34a93f465c27 ""
   (generated)
   "approximation_assigment.aux"
   "approximation_assigment.log"
