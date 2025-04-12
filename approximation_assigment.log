@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  12 APR 2025 13:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  12 APR 2025 14:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -317,10 +317,10 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
  (/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<ogvssampled_BIG.png, id=20, 911.3247pt x 527.571pt>
+<ogvssampled_BIG.png, id=24, 911.3247pt x 527.571pt>
 File: ogvssampled_BIG.png Graphic file (type png)
 <use ogvssampled_BIG.png>
-Package pdftex.def Info: ogvssampled_BIG.png  used on input line 60.
+Package pdftex.def Info: ogvssampled_BIG.png  used on input line 61.
 (pdftex.def)             Requested size: 424.06033pt x 245.48703pt.
 
 
@@ -328,27 +328,29 @@ Package pdftex.def Info: ogvssampled_BIG.png  used on input line 60.
 
 {/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-[2 <./ogvssampled_BIG.png>] (./approximation_assigment.aux)
+[2 <./ogvssampled_BIG.png>]
+
+[3] (./approximation_assigment.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `approximation_assigment.out' has not changed.
-(rerunfilecheck)             Checksum: 82914BB69C30E25CAD2E3DFA98E29F3E;402.
+(rerunfilecheck)             Checksum: C7F55AA5D606E81DC6DA6C7966960831;495.
  ) 
 Here is how much of TeX's memory you used:
- 9866 strings out of 475172
- 152590 string characters out of 5764325
- 557806 words of memory out of 5000000
- 32748 multiletter control sequences out of 15000+600000
+ 9869 strings out of 475172
+ 152618 string characters out of 5764325
+ 559806 words of memory out of 5000000
+ 32749 multiletter control sequences out of 15000+600000
  566085 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,7n,79p,341b,558s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,341b,563s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on approximation_assigment.pdf (2 pages, 200993 bytes).
+Output written on approximation_assigment.pdf (3 pages, 206478 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
