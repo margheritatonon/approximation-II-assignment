@@ -5,6 +5,7 @@ from scipy.fft import fft, fftfreq
 #defining all parameters:
 frequency = 5
 sampling_frequency = 7
+t_end = 2
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
 #time vector from 0 to 2
@@ -25,7 +26,7 @@ def generate_signal(t_end, frequency, plot = False):
         plt.show()
     return t, x
 
-t_continuous, x_continuous = generate_signal(2, frequency, plot = True)
+t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
 print(f"len(x_continuous) = {len(x_continuous)}")
 
 #2: SAMPLING
@@ -35,7 +36,7 @@ print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_
 
 def sample_signal(x, t, fs, plot_one = False, plot_two = False):
     """
-    Samples the continuous time signal x at a rate fs.
+    Samples the continuous time signal x at a sampling frequency fs.
     t: the time interval of the sampled signal x
     Returns the time and amplitude arrays of the sampled signal
     If plot_one == True, plots the continuous signal along with the sampled points.
