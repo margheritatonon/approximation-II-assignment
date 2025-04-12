@@ -101,7 +101,7 @@ yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
 #RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
-def sinc_function(x_sampled, t_sampled, x_continuous, t_s, plot = False):
+def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
     """
     Returns the reconstructed signal from the sampled signal x_sampled, using t_sampled (the discrete timesteps of the sampled signal) and t_s (the time axis that we want the signal to be reconstructed on).
     If plot = True, plots the reconstructed signal along with the original signal and sampled points.
@@ -121,4 +121,4 @@ def sinc_function(x_sampled, t_sampled, x_continuous, t_s, plot = False):
 
     return x_s
 
-x_s = sinc_function(x_sampled, t_sampled, x_continuous, t_continuous, plot = True)
+x_s = reconstruction(x_sampled, t_sampled, x_continuous, t_continuous, plot = True)
