@@ -20,7 +20,7 @@ def generate_signal(t_end, frequency, plot = False):
     if plot == True:
         plt.plot(t, x)
         plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz")
-        plt.xlabel("Time (s)")
+        plt.xlabel("Time")
         plt.ylabel("Amplitude")
         plt.grid(True)
         plt.show()
@@ -51,7 +51,7 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
         #plt.scatter(t_sampled, x_sampled, label = "Sampled", color = "red")
         plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
         plt.title(f"Sampled Continuous Time Signal with Sampling Frequency {fs} Hz")
-        plt.xlabel("Time (s)")
+        plt.xlabel("Time")
         plt.ylabel("Amplitude")
         plt.grid(True)
         #plt.legend()
@@ -59,7 +59,7 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
     if plot_two == True:
         plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
         plt.title(f"Sampled Signal with Sampling Frequency {fs} Hz")
-        plt.xlabel("Time (s)")
+        plt.xlabel("Time")
         plt.ylabel("Amplitude")
         plt.grid(True)
         plt.show()
@@ -76,6 +76,7 @@ def continuous_fourier_transform():
     pass
 
 #TODO: here there are some bugs with the plot (e.g. at parameter values freq = 5, sampling freq = 11)
+#TODO: make it so that we see the copies of the samples instead of just the original signal, so we can see aliasing in action
 def sampled_fourier_transform(x_sampled, sampling_freq, plot = False):
     """
     Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
@@ -100,6 +101,7 @@ yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, plot = True)
 
 
 #RECONSTRUCTION
+#TODO: create a function that plots only the filtered frequencies, but not the other "aliased" ones --> and if we do have aliasing show what the output of the ideal filter is
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
 def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
@@ -111,12 +113,13 @@ def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
     Fs = 1/t_sampled[1]
     x_s = np.zeros(len(t_s))
     for n in range(0, len(t_sampled)):
-        x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter 
+        x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter - but we are adding the frequencies together
     
     if plot == True:
         plt.plot(t_s, x_s, label = "Reconstructed")
         plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
         plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz) versus Original Signal (frequency {frequency} Hz)")
+        plt.xlabel("Time")
         plt.legend() #TODO: add a legend location (or specify in the title)
         plt.show() #TODO: understand why when we have freq = 5 and then sampling freq = 12 (shannon nyquist MET), we do not get the exact same signal. --> is it because of quantization errors?
 
