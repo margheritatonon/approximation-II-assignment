@@ -148,7 +148,8 @@ As long as we set $f_s > 2B$, however, the signal is able to be perfectly recove
 %here dont put all of the different frequencies because we do that in the discussion
 To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
 \begin{lstlisting}[language = Python]
-    s
+    import numpy as np
+    one = 1
 \end{lstlisting}
 %insert code block here
 Here, I simply create a time array with 10000 elements, and then apply the sine function with the given frequency to the 10000 time values. 
