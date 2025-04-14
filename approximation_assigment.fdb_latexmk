@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1744647304.12665 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1744647304.46873 0
+["pdflatex"] 1744647399.72926 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1744647400.08008 0
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -87,10 +87,10 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1740194047 92935 ab22f987f93038b61e05dc32d7c07157 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1740220808 1928676 6282b037fa4075742b448fcb64c0e6d1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf.cnf" 1740220793.40005 708 85fd07691b6294ba94c59dbc62380410 ""
-  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1744647303.55745 12907 6cfc7bfd1fbea5b59795c04f195d4f5f ""
-  "approximation_assigment.aux" 1744647304.43065 1174 ad87c76e4b30902bdaafef4d56666bb8 "pdflatex"
-  "approximation_assigment.out" 1744647304.4315 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
-  "approximation_assigment.tex" 1744647303.55745 12907 6cfc7bfd1fbea5b59795c04f195d4f5f ""
+  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1744647399.54778 12967 260879042d2f4e9f00d9600200ca2d0f ""
+  "approximation_assigment.aux" 1744647400.04141 1174 ad87c76e4b30902bdaafef4d56666bb8 "pdflatex"
+  "approximation_assigment.out" 1744647400.04181 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
+  "approximation_assigment.tex" 1744647399.54778 12967 260879042d2f4e9f00d9600200ca2d0f ""
   "ogvssampled_BIG.png" 1744457345.65553 87696 660a635a7daeb32f77f27cfbfb751b7c ""
   (generated)
   "approximation_assigment.aux"
