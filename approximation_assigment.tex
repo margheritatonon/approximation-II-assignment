@@ -150,8 +150,22 @@ As long as we set $f_s > 2B$, however, the signal is able to be perfectly recove
 To implement the process of sampling in Python, I begin by defining a functionn \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
 %\begin{lstlisting}[language = Python]
 \begin{verbatim}
-    def generate_signal():
-        pass
+    def generate_signal(t_end, frequency, plot = False):
+    """
+    Generates a sine wave from t = 0 to t=t_end with frequency defined by the frequency parameter.
+    If plot = True, plots the generated sine wave.
+    Returns the time array t and the x(t) sinusoid.
+    """
+    t = np.linspace(0, t_end, 10000)
+    x = np.sin(2 * np.pi * frequency * t)
+    if plot == True:
+        plt.plot(t, x)
+        plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz")
+        plt.xlabel("Time")
+        plt.ylabel("Amplitude")
+        plt.grid(True)
+        plt.show()
+    return t, x
 \end{verbatim}
 %\end{lstlisting}
 %insert code block here

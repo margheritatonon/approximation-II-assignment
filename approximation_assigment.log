@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  15 APR 2025 00:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  15 APR 2025 00:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -329,8 +329,20 @@ Package pdftex.def Info: ogvssampled_BIG.png  used on input line 63.
 {/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 [2 <./ogvssampled_BIG.png>]
+Overfull \hbox (90.43518pt too wide) in paragraph at lines 169--169
+[]    \OT1/cmtt/m/n/10 Generates a sine wave from t = 0 to t=t_end with frequency defined by the frequency parameter.[] 
+ []
 
-[3] (./approximation_assigment.aux)
+
+Overfull \hbox (43.1856pt too wide) in paragraph at lines 169--169
+[]        \OT1/cmtt/m/n/10 plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz")[] 
+ []
+
+
+
+[3]
+
+[4] (./approximation_assigment.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -339,18 +351,18 @@ Package rerunfilecheck Info: File `approximation_assigment.out' has not changed.
 (rerunfilecheck)             Checksum: 832650D5AC6D3075BC61B37F6543EEA9;578.
  ) 
 Here is how much of TeX's memory you used:
- 9879 strings out of 475172
- 152796 string characters out of 5764325
+ 9880 strings out of 475172
+ 152802 string characters out of 5764325
  558806 words of memory out of 5000000
  32756 multiletter control sequences out of 15000+600000
  566253 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,7n,79p,375b,482s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,375b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on approximation_assigment.pdf (3 pages, 226661 bytes).
+Output written on approximation_assigment.pdf (4 pages, 232279 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 85 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
+ 121 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
  54 words of extra memory for PDF output out of 10000 (max. 10000000)
 
