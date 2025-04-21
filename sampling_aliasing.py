@@ -11,11 +11,11 @@ t_end = 2
 #time vector from 0 to 2
 def generate_signal(t_end, frequency, plot = False):
     """
-    Generates a sine wave from t = 0 to t=t_end with frequency defined by the frequency parameter.
+    Generates a sine wave from t = 0 to t = t_end with frequency defined by the frequency parameter.
     If plot = True, plots the generated sine wave.
     Returns the time array t and the x(t) sinusoid.
     """
-    t = np.linspace(0, t_end, 10000)
+    t = np.linspace(0, t_end, 10000 * t_end/2)
     x = np.sin(2 * np.pi * frequency * t)
     if plot == True:
         plt.plot(t, x)
@@ -32,7 +32,7 @@ print(f"len(x_continuous) = {len(x_continuous)}")
 #2: SAMPLING
 #we know that to avoid aliasing, we should have fs > 2 * B
 nyquist_shannon_threshold = 2 * frequency 
-print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}")
+print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
 
 def sample_signal(x, t, fs, plot_one = False, plot_two = False):
     """
@@ -75,7 +75,6 @@ t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_freque
 def continuous_fourier_transform():
     pass
 
-#TODO: here there are some bugs with the plot (e.g. at parameter values freq = 5, sampling freq = 11)
 
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
