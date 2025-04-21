@@ -79,7 +79,7 @@ def continuous_fourier_transform():
 
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
-    Returns the Fast Fourier Transform array (xf) and the corresponding __ values.
+    Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf).
     If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
@@ -118,7 +118,7 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
 #1/Ts * the sum from n = -inf to inf of  X(f - n/Ts) 
 #and this is why the representation of the sampled signal in the frequency domain is the fourier transform of the original function but duplicated and shifted over
 
-yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
+yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 4, plot = True)
 
 
 #RECONSTRUCTION
