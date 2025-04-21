@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from sampling_aliasing import generate_signal
+from sampling_aliasing import generate_signal, xf, yf
 
 frequency = 2
 sampling_frequency = 5
@@ -31,3 +31,31 @@ def sample_signal(x, t, fs, plot_one = False):
     return t_sampled, x_sampled
 
 sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True)
+
+
+#creating a filtering function just to visualize the filtered frequencies in the frequency domain
+def filtering(yf:np.array, xf:np.array, fl:float, fh:float, plot = False):
+    """
+    Uses an ideal band-pass filter to select the frequencies between fl and fh of the fourier transform of the signal yf, using the frequencies of the fourier transform of the signal xf.
+    Returns the filtered array.
+    If plot == True, then a plot of the filtered frequencies in the frequency domain is shown.
+    """
+    mask = (np.abs(xf) >= fl) & (np.abs(xf) <= fh)
+    yf_filtered = yf.copy()
+    yf_filtered = np.copy(yf)
+    yf_filtered[~mask] = 0 #makes all of the frequencies outside of the filter = 0
+
+    if plot == True:
+        plt.figure(figsize=(10, 4))
+        plt.plot(xf, np.abs(yf), label="Original")
+        plt.plot(xf, np.abs(yf_filtered), label="Filtered", ls = "--")
+        plt.title("Frequency Domain Filtering")
+        plt.xlabel("Frequency (Hz)")
+        plt.ylabel("Magnitude")
+        plt.grid(True)
+        plt.legend()
+        plt.show()
+
+    return yf_filtered
+
+filtering(yf, xf, 1, 5, plot = True)
