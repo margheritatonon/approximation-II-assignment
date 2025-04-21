@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  21 APR 2025 10:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  21 APR 2025 11:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -341,15 +341,15 @@ Package rerunfilecheck Info: File `approximation_assigment.out' has not changed.
 (rerunfilecheck)             Checksum: 832650D5AC6D3075BC61B37F6543EEA9;578.
  ) 
 Here is how much of TeX's memory you used:
- 9880 strings out of 475172
- 152845 string characters out of 5764325
+ 9879 strings out of 475172
+ 152827 string characters out of 5764325
  557806 words of memory out of 5000000
- 32756 multiletter control sequences out of 15000+600000
+ 32755 multiletter control sequences out of 15000+600000
  566253 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,79p,387b,559s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,387b,508s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on approximation_assigment.pdf (4 pages, 228397 bytes).
+Output written on approximation_assigment.pdf (4 pages, 230548 bytes).
 PDF statistics:
  121 PDF objects out of 1000 (max. 8388607)
  88 compressed objects within 1 object stream

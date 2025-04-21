@@ -148,36 +148,43 @@ As long as we set $f_s > 2B$, however, the signal can be perfectly recovered.
 %explanation of code
 %the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
 %here dont put all of the different frequencies because we do that in the discussion
-To implement the process of sampling in Python, I begin by defining a functionn \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
+To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
 %\begin{lstlisting}[language = Python]
 %\end{lstlisting}
 %insert code block here
-Here, I simply create a time array with 10000 elements, and then apply the sine function with the given frequency to the 10000 time values. 
-Users can set the ``plot'' parameter to ``True'' if they wish a plot of the original continuous-time signal to be displayed.
+Here, I simply create a time array with $5000t_e$ elements, whre $t_e$ is the duration in seconds of the signal, 
+and then apply the sine function with the given frequency to the $5000 t_e$ time values. 
+Users can set the \verb|plot| parameter to \verb|True| if they wish a plot of the original continuous-time signal to be displayed.
 
-Next, I define the ``sample\_signal'' function, which samples the continuous signal at a specified sampling frequency.
-Users can set ``plot\_one'' to ``True'' if they wish to visualize the original signal together with the sampled points, and ``plot\_two'' to True if they wish to just visualize the sampled points.
-%code block 
-%NEED TO EXPLAIN WHAT IS HAPPENING IN THIS CODE BLOCK
+Next, I define the \verb|sample_signal| function, which samples the continuous signal at a specified sampling frequency.
+%code block of sample_signal
+In this code block, I create a new time array \verb|t_sampled| for the sampled signal using the sampling period, representing the new set of discrete time points. 
+Next, I use \verb|np.interp| to perform the sampling of the original signal \verb|x| at the time points in the \verb|t_sampled| array.
+Users can set \verb|plot_one| to \verb|True| if they wish to visualize the original signal together with the sampled points, 
+and \verb|plot_two| to \verb|True| if they wish to just visualize the sampled points.
 
-Thirdly, I create the ``sampled\_fourier\_transform'' function, which takes as inputs the sampled amplitudes and the sampling frequency, and performs the Fast Fourier Transform of the sampled amplitudes using the ``scipy'' module. %something that u used scipy
-Users can again set the plot parameter to True if they wish to observe the frequencies of the sampled signal in the frequency domain. %something abt this but u have to fix it in the code
+Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
+and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [1].
+The Fast Fourier Transform is ... %need to add something about what FFT is and why it was used here
+Therefore, in the \verb|sampled_fourier_transform| function, \verb|yf| is a complex array representing the sampled signal \verb|x_sampled| in the frequency domain, 
+and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to.
+If \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
 %code block
 
-Finally, I define the ``reconstruction'' function, which 
+Finally, I define the \verb|reconstruction| function, which 
 
 The sinc function, defined as $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$, is utilized as it is the time domain representation of the ideal band pass filter.
 %in one of the summary sheets you have more about this --> say why u are using it like that? and no convolution or something?
 The sinc function is obtained by taking the inverse Fourier Transform of the ideal band pass filter:
 \begin{center}
     \begin{math}
-        h(t) = \int_{-\infty}^{\infty} H(f) e^{2\pi i ft} df
+        h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) e^{2\pi i ft} df
     \end{math}  
 \end{center}
 $H(f)$ is even and real and therefore $e^{2\pi i ft}$ = $\cos(2\pi ft) + i \sin(2\pi ft)$ = $\cos(2\pi ft)$ as the imaginary part is 0.  
 \begin{center}
     \begin{math}
-        h(t) = \int_{-\infty}^{\infty} H(f) \cos(2\pi ft) df
+        h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) \cos(2\pi ft) df
     \end{math}  
 \end{center}
 Evaluating this integral,
@@ -191,14 +198,16 @@ This is the difference of two sinc-like functions.
 The signal $x(t)$ can therefore be recovered in the following way:
 \begin{center}
     \begin{math}
-        x(t) = \sum_{-\infty}^{\infty} x(nT) \text{sinc}\left( \frac{t}{T} - n \right)
+        x(t) = \displaystyle\sum_{n=-\infty}^{\infty} x(nT) \text{sinc}\left( \frac{t}{T} - n \right)
     \end{math}  
 \end{center}
-which is the approach implemented in the ``reconstruction'' function. 
+which is the approach implemented in the \verb|reconstruction| function. 
 
 \section{Discussion}
 %results of code
 %different initial frequencies, different sampling frequencies based on shannon nyquist thm
+
+%we see that we have not exactly the same reconstruction and original but this is bc of: Finite number of samples, Numerical approximations (e.g., np.sinc is not truly ideal), Edge effects due to time-domain boundaries --> CHECK WHAT THESE MEAN
 
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
