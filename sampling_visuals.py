@@ -33,6 +33,7 @@ def sample_signal(x, t, fs, plot_one = False):
 sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True)
 
 
+#TODO: make it compatible with the function that plots the different frequencies
 #creating a filtering function just to visualize the filtered frequencies in the frequency domain
 def filtering(yf:np.array, xf:np.array, fl:float, fh:float, plot = False):
     """
