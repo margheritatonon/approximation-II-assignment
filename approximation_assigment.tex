@@ -148,11 +148,14 @@ As long as we set $f_s > 2B$, however, the signal can be perfectly recovered.
 %explanation of code
 %the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
 %here dont put all of the different frequencies because we do that in the discussion
+
+%maybe like one sentence of what the sampling process consists of
+
 To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
 %\begin{lstlisting}[language = Python]
 %\end{lstlisting}
 %insert code block here
-Here, I simply create a time array with $5000t_e$ elements, whre $t_e$ is the duration in seconds of the signal, 
+Here, I simply create a time array with $5000t_e$ elements, where $t_e$ is the duration in seconds of the signal, 
 and then apply the sine function with the given frequency to the $5000 t_e$ time values. 
 Users can set the \verb|plot| parameter to \verb|True| if they wish a plot of the original continuous-time signal to be displayed.
 
@@ -165,23 +168,36 @@ and \verb|plot_two| to \verb|True| if they wish to just visualize the sampled po
 
 Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
 and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [1].
-The Fast Fourier Transform is ... %need to add something about what FFT is and why it was used here
+The Fourier Transform, whose purpose is to transform a signal from the time domain to a signal in the frequency domain, is defined as
+\begin{center}
+    \begin{math}
+       X(f) = \displaystyle \int_{-\infty}^{\infty} x(t)e^{-i2\pi ft}\, dt
+    \end{math}
+\end{center}
+and it integrates a signal over all time (from $-\infty$ to $+\infty$) and requires a signal to be continuous. 
+However, in many practical situations, such as our current scenario, we work with finite and discrete signals. 
+The Discrete Fourier Transform allows us to numerically compute the Fourier Transform for a finite time interval, 
+and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform. 
 Therefore, in the \verb|sampled_fourier_transform| function, \verb|yf| is a complex array representing the sampled signal \verb|x_sampled| in the frequency domain, 
 and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to.
 If \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
 %code block
 
-Finally, I define the \verb|reconstruction| function, which 
+Finally, I define the \verb|reconstruction| function, which reconstructs the original signal from the sampled signal.
+This function takes as inputs the array of the amplitudes of the sampled signal \verb|x_sampled| and the time array of the sampled signal \verb|t_sampled|.
+If users wish to plot the reconstructed signal together with the original signal, they must set the \verb|plot| parameter to \verb|True| and provide the original signal \verb|x_continuous| as well as the continuous time array \verb|t_s|.
+%code block here
 
-The sinc function, defined as $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$, is utilized as it is the time domain representation of the ideal band pass filter.
+In the code, I reconstruct the signal in the time domain using the sinc function.
+The sinc function, defined as $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$, is utilized as it is the time domain representation of the ideal band pass filter $H(f)$.
 %in one of the summary sheets you have more about this --> say why u are using it like that? and no convolution or something?
-The sinc function is obtained by taking the inverse Fourier Transform of the ideal band pass filter:
+The sinc function is the result of taking the inverse Fourier Transform of the ideal band pass filter:
 \begin{center}
     \begin{math}
         h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) e^{2\pi i ft} df
     \end{math}  
 \end{center}
-$H(f)$ is even and real and therefore $e^{2\pi i ft}$ = $\cos(2\pi ft) + i \sin(2\pi ft)$ = $\cos(2\pi ft)$ as the imaginary part is 0.  
+$H(f)$ is even and real; therefore, $e^{2\pi i ft}$ = $\cos(2\pi ft) + i \sin(2\pi ft)$ = $\cos(2\pi ft)$.
 \begin{center}
     \begin{math}
         h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) \cos(2\pi ft) df
@@ -201,7 +217,13 @@ The signal $x(t)$ can therefore be recovered in the following way:
         x(t) = \displaystyle\sum_{n=-\infty}^{\infty} x(nT) \text{sinc}\left( \frac{t}{T} - n \right)
     \end{math}  
 \end{center}
-which is the approach implemented in the \verb|reconstruction| function. 
+which is the approach implemented in the \verb|reconstruction| function. Because it is not possible to perform an infinite sum, I must loop over a finite number of iterations. Mathematically, this looks like
+\begin{center}
+    \begin{math}
+        x(t) = \displaystyle\sum_{n}^{} x[n] \text{sinc}\left( F_st - n \right)
+    \end{math}  
+\end{center}
+where $F_s = 1/T_s$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
 
 \section{Discussion}
 %results of code
