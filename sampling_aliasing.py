@@ -82,23 +82,26 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
     If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
-    print(n)
-    yf = fft(x_sampled)
-    print(yf)
-    xf = fftfreq(n, 1 / sampling_freq)
-    if plot == True:
-        magnitude = np.abs(yf)
-        xf_shifted = fftshift(xf)
-        magnitude_shifted = fftshift(magnitude)
+    yf = fft(x_sampled) #the fourier transform of the sampled signal
+    xf = fftfreq(n, 1 / sampling_freq) #the corresponding frequencies of the sampled signal
 
-        total_span = sampling_freq
+    if plot == True:
+        magnitude = np.abs(yf) #the modulus of the fourier transform of the sampled signal
+        #for better visualization:
+        xf_shifted = fftshift(xf) #rearranges the frequncies so that 0 is in the center
+        magnitude_shifted = fftshift(magnitude) #rearranged magnitudes so 0 is in th center to match xf_shifted
+
+        total_span = sampling_freq #the range between each repeated frequency spectrum
+
+        #initializing:
         xf_tiled = []
         magnitude_tiled = []
 
-        for i in range(-num_duplicates, num_duplicates + 1):
-            xf_tiled.extend(xf_shifted + i * total_span)
+        for i in range(-num_duplicates, num_duplicates + 1): #loops through to create copies for visualization
+            xf_tiled.extend(xf_shifted + i * total_span) #adds each element of the iterable to the list individually
             magnitude_tiled.extend(magnitude_shifted)
         
+        #plotting
         plt.figure(figsize=(10, 4))
         plt.plot(xf_tiled, magnitude_tiled)
         plt.title("Frequency Domain Representation of Sampled Signal")
@@ -107,10 +110,6 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
         plt.axvline(x=0, color='gray', linestyle='--', linewidth=1)
         plt.show()
 
-        #plt.plot(xf, np.abs(yf)) #we need to do np.abs on yf because its values are complex
-        #plt.title("Frequency Domain Representation of Sampled Signal")
-        #plt.xlabel("Frequency (Hertz)")
-        #plt.show()
     return yf, xf
 
 #the representation of our signal in the frequency domain is
