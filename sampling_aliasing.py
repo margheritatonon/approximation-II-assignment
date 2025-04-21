@@ -4,7 +4,7 @@ from scipy.fft import fft, fftfreq, fftshift
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 11
+sampling_frequency = 12
 t_end = 2
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
@@ -15,7 +15,7 @@ def generate_signal(t_end, frequency, plot = False):
     If plot = True, plots the generated sine wave.
     Returns the time array t and the x(t) sinusoid.
     """
-    t = np.linspace(0, t_end, 10000 * t_end/2)
+    t = np.linspace(0, t_end, int(5000 * t_end))
     x = np.sin(2 * np.pi * frequency * t)
     if plot == True:
         plt.plot(t, x)
@@ -112,10 +112,6 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
 
     return yf, xf
 
-#the representation of our signal in the frequency domain is
-#1/Ts * the sum from n = -inf to inf of  X(f - n/Ts) 
-#and this is why the representation of the sampled signal in the frequency domain is the fourier transform of the original function but duplicated and shifted over
-
 yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 4, plot = True)
 
 
@@ -133,6 +129,7 @@ def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
 
     Fs = 1/t_sampled[1]
     x_s = np.zeros(len(t_s))
+
     for n in range(0, len(t_sampled)):
         x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter - but we are adding the frequencies together
     
