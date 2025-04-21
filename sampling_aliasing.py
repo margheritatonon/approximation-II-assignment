@@ -71,11 +71,6 @@ t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_freque
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
 #we need to compute the FFT of the signals
 
-#TODO: not sure if this function is going to be useful
-def continuous_fourier_transform():
-    pass
-
-
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
     Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf).
@@ -115,10 +110,7 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
 yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 4, plot = True)
 
 
-#RECONSTRUCTION
-#TODO: create a function that plots only the filtered frequencies, but not the other "aliased" ones --> and if we do have aliasing show what the output of the ideal filter is
-#I think here I meant in the frequency domain
-
+#4: RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
 def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
@@ -138,8 +130,8 @@ def reconstruction(x_sampled, t_sampled, x_continuous, t_s, plot = False):
         plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
         plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz) versus Original Signal (frequency {frequency} Hz)")
         plt.xlabel("Time")
-        plt.legend() #TODO: add a legend location (or specify in the title)
-        plt.show() #TODO: understand why when we have freq = 5 and then sampling freq = 12 (shannon nyquist MET), we do not get the exact same signal. --> is it because of quantization errors?
+        plt.legend(loc="upper left")
+        plt.show()
 
     return x_s
 
