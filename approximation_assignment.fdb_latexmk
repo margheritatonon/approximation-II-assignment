@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745324625.96915 "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" "approximation_assignment.pdf" "approximation_assignment" 1745324626.34888 0
+["pdflatex"] 1745330423.45524 "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" "approximation_assignment.pdf" "approximation_assignment" 1745330423.88717 0
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -88,11 +88,12 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1740194047 92935 ab22f987f93038b61e05dc32d7c07157 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1740220808 1928676 6282b037fa4075742b448fcb64c0e6d1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf.cnf" 1740220793.40005 708 85fd07691b6294ba94c59dbc62380410 ""
-  "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" 1745324625.42904 17159 6388d823d546d7feee5f1b7d53aab03b ""
-  "approximation_assignment.aux" 1745324626.30183 1198 7c012c492bc72ae046535b931b7a47d8 "pdflatex"
-  "approximation_assignment.out" 1745324626.30221 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
-  "approximation_assignment.tex" 1745324625.42904 17159 6388d823d546d7feee5f1b7d53aab03b ""
+  "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" 1745330423.21219 17432 d36e25a93f985edd23bc62b6cf810e8f ""
+  "approximation_assignment.aux" 1745330423.84801 1424 bea7928369c3cd7b5e8047c261471eae "pdflatex"
+  "approximation_assignment.out" 1745330423.84849 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
+  "approximation_assignment.tex" 1745330423.21219 17432 d36e25a93f985edd23bc62b6cf810e8f ""
   "images/leftright_ogsampled.png" 1745288217.67019 62731 0a02d3321566ffbe2addd9fe38a5958f ""
+  "images/sinewave_5hz.png" 1745330407.0489 90092 fa7263f5f8770d1a2b42512175d2b167 ""
   (generated)
   "approximation_assignment.aux"
   "approximation_assignment.log"

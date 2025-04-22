@@ -161,6 +161,11 @@ INPUT ./images/leftright_ogsampled.png
 INPUT ./images/leftright_ogsampled.png
 INPUT /Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./images/sinewave_5hz.png
+INPUT ./images/sinewave_5hz.png
+INPUT ./images/sinewave_5hz.png
+INPUT ./images/sinewave_5hz.png
+INPUT ./images/sinewave_5hz.png
 INPUT approximation_assignment.aux
 INPUT ./approximation_assignment.out
 INPUT ./approximation_assignment.out

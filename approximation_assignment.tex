@@ -76,7 +76,7 @@ In the time domain, a sampled signal looks like discrete spikes (Figure 1).
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{images/leftright_ogsampled.png}
     \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 10 Hz.}
-    \label{fig:grid}
+    \label{fig:enter-label}
 \end{figure}
 The Fourier Transform, defined as
 \begin{center}
@@ -260,6 +260,14 @@ where $F_s = 1/T_s$ and $x[n]$ is the value of the signal at the $n$-th sampling
 %different initial frequencies, different sampling frequencies based on shannon nyquist thm
 
 %we see that we have not exactly the same reconstruction and original but this is bc of: Finite number of samples, Numerical approximations (e.g., np.sinc is not truly ideal), Edge effects due to time-domain boundaries --> CHECK WHAT THESE MEAN. could it also be related to quantization?
+
+We begin by observing a continuous time signal: a sine wave with frequency 5 Hertz (Figure 2). 
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{images/sinewave_5hz.png}
+    \caption{Sine wave with frequency 5 Hz.}
+    \label{fig:enter-label}
+\end{figure}
+
 
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
