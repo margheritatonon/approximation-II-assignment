@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  22 APR 2025 22:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  22 APR 2025 22:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -348,44 +348,31 @@ Package pdftex.def Info: images/leftright_ogsampled.png  used on input line 77.
 <images/sinewave_5hz.png, id=57, 867.24pt x 433.62pt>
 File: images/sinewave_5hz.png Graphic file (type png)
 <use images/sinewave_5hz.png>
-Package pdftex.def Info: images/sinewave_5hz.png  used on input line 266.
+Package pdftex.def Info: images/sinewave_5hz.png  used on input line 265.
 (pdftex.def)             Requested size: 424.06033pt x 212.03235pt.
 
 
 [4]
-<images/sampled_12hz_1.png, id=62, 867.24pt x 433.62pt>
-File: images/sampled_12hz_1.png Graphic file (type png)
-<use images/sampled_12hz_1.png>
-Package pdftex.def Info: images/sampled_12hz_1.png  used on input line 280.
-(pdftex.def)             Requested size: 339.24956pt x 169.6272pt.
-<images/sampled_12hz_2.png, id=63, 867.24pt x 433.62pt>
-File: images/sampled_12hz_2.png Graphic file (type png)
-<use images/sampled_12hz_2.png>
-Package pdftex.def Info: images/sampled_12hz_2.png  used on input line 286.
-(pdftex.def)             Requested size: 339.24956pt x 169.6272pt.
+<images/sampled_12hz_3.png, id=62, 1011.78pt x 361.35pt>
+File: images/sampled_12hz_3.png Graphic file (type png)
+<use images/sampled_12hz_3.png>
+Package pdftex.def Info: images/sampled_12hz_3.png  used on input line 276.
+(pdftex.def)             Requested size: 339.24956pt x 121.15913pt.
+<images/sampled_7hz_3.png, id=63, 1011.78pt x 361.35pt>
+File: images/sampled_7hz_3.png Graphic file (type png)
+<use images/sampled_7hz_3.png>
+Package pdftex.def Info: images/sampled_7hz_3.png  used on input line 282.
+(pdftex.def)             Requested size: 339.24956pt x 121.15913pt.
 
 
-[5 <./images/sinewave_5hz.png>]
-<images/sampled_7hz_1.png, id=70, 867.24pt x 433.62pt>
-File: images/sampled_7hz_1.png Graphic file (type png)
-<use images/sampled_7hz_1.png>
-Package pdftex.def Info: images/sampled_7hz_1.png  used on input line 297.
-(pdftex.def)             Requested size: 339.24956pt x 169.6272pt.
-<images/sampled_7hz_2.png, id=71, 867.24pt x 433.62pt>
-File: images/sampled_7hz_2.png Graphic file (type png)
-<use images/sampled_7hz_2.png>
-Package pdftex.def Info: images/sampled_7hz_2.png  used on input line 303.
-(pdftex.def)             Requested size: 339.24956pt x 169.6272pt.
+[5 <./images/sinewave_5hz.png> <./images/sampled_12hz_3.png> <./images/sampled_7hz_3.png>]
 
-
-[6 <./images/sampled_12hz_1.png> <./images/sampled_12hz_2.png>]
-
-[7
+[6
 pdfTeX warning (ext4): destination with the same identifier (name{cite.citekey}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.327 \end{document}
-                     <./images/sampled_7hz_1.png> <./images/sampled_7hz_2.png>] (./approximation_assignment.aux)
+l.339 \end{document}
+                    ] (./approximation_assignment.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -398,18 +385,18 @@ Package rerunfilecheck Info: File `approximation_assignment.out' has not changed
 (rerunfilecheck)             Checksum: 832650D5AC6D3075BC61B37F6543EEA9;578.
  ) 
 Here is how much of TeX's memory you used:
- 9991 strings out of 475172
- 155191 string characters out of 5764325
+ 9975 strings out of 475172
+ 154738 string characters out of 5764325
  557219 words of memory out of 5000000
- 32857 multiletter control sequences out of 15000+600000
+ 32843 multiletter control sequences out of 15000+600000
  566253 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,79p,388b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,391b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on approximation_assignment.pdf (7 pages, 565758 bytes).
+Output written on approximation_assignment.pdf (6 pages, 483261 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 79 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 138 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

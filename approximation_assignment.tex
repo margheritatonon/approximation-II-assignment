@@ -183,8 +183,7 @@ Next, I define the \verb|sample_signal| function, which samples the continuous s
 %code block of sample_signal
 In this code block, I create a new time array \verb|t_sampled| for the sampled signal using the sampling period, representing the new set of discrete time points. 
 Next, I use \verb|np.interp| to perform the sampling of the original signal \verb|x| at the time points in the \verb|t_sampled| array.
-Users can set \verb|plot_one| to \verb|True| if they wish to visualize the original signal together with the sampled points, 
-and \verb|plot_two| to \verb|True| if they wish to just visualize the sampled points.
+Users can set \verb|plot_one| to \verb|True| if they wish to visualize the original signal together with the sampled points, \verb|plot_two| to \verb|True| if they wish to just visualize the sampled points, and \verb|plot_three| to \verb|True| to visualize both plots side by side.
 
 Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
 and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [2].
@@ -268,43 +267,56 @@ We begin by observing a continuous time signal: a sine wave with frequency 5 Her
     \label{fig:enter-label}
 \end{figure}
 According to the Shannon-Nyquist theorem, if we sample the signal at a frequency greater than $2\cdot 5 = 10$ Hz, we can perfectly reconstruct the signal.
-Sampling the sine wave with a sampling frequency of 7 Hz, less than the Shannon-Nyquist threshold, is seen in Figure 3. 
-Sampling the sine wave with a sampling frequency of 12 Hz, greater than the Shannon-Nyquist threshold, is seen in Figure 4.
-
-%TODO: when the paper is done being written, need to fix the formatting of these images. also need to add code before you fix it.
+Sampling the sine wave with sampling frequencies of 12 Hz (above the Shannon-Nyquist threshold) and 7 Hz (below the Shannon-Nyquist threshold) is seen in Figure 3.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_12hz_1.png}
-        \\[0.5em] % optional spacing between rows
+        \includegraphics[width=\linewidth]{images/sampled_12hz_3.png}
+        \\[0.5em] 
     \end{minipage}
     
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_12hz_2.png}
+        \includegraphics[width=\linewidth]{images/sampled_7hz_3.png}
     \end{minipage}
     
-    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz.}
+    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz (top) and 7 Hz (bottom).}
 \end{figure}
 
+%\begin{figure}[H]
+%    \centering
+%    \begin{minipage}{0.8\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/sampled_12hz_1.png}
+%        \\[0.5em] % optional spacing between rows
+%    \end{minipage}
+    
+%    \begin{minipage}{0.8\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/sampled_12hz_2.png}
+%    \end{minipage}
+    
+%    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz.}
+%\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.8\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/sampled_7hz_1.png}
-        \\[0.5em] % optional spacing between rows
-    \end{minipage}
+
+%\begin{figure}[H]
+%    \centering
+%   \begin{minipage}{0.8\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/sampled_7hz_1.png}
+%        \\[0.5em] % optional spacing between rows
+%    \end{minipage}
     
-    \begin{minipage}{0.8\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/sampled_7hz_2.png}
-    \end{minipage}
+%    \begin{minipage}{0.8\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/sampled_7hz_2.png}
+%    \end{minipage}
     
-    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 7 Hz.}
-\end{figure}
+%    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 7 Hz.}
+%\end{figure}
 
 As expected, the time domain representation of the signal sampled at 12 Hz has more spikes than the signal sampled at 7 Hz. 
 
