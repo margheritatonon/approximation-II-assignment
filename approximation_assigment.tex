@@ -17,6 +17,14 @@
 \maketitle
 
 \section{Introduction}
+In signal processing, computers analyze and process discrete time signals. 
+However, most signals of interest are continuous time signals, as these are the signals most commonly found in nature -- e.g. sound waves.
+We therefore use sampling, allowing us to convert a continuous-time signal into a discrete signal that a computer is able to process.
+Nonetheless, one of the factors determining the quality of sampled signals is the sampling rate. %not sure if i should mention quantization, because i dont mention it at all ever.
+Given that the Shannon-Nyquist theorem, a condition relating to the sampling rate, is met, a signal can be perfectly recovered from its sampled signal. 
+However, if this condition is not met, a signal can no longer be perfectly recovered due to a phenomenon named aliasing [1].
+Here, we will explore the process of recovering a sampled signal, looking at different sampling rates that meet and do not meet the conditions for perfect signal recovery.
+
 %introduction sentence, context, motivation
 
 \section{Background}
@@ -58,7 +66,7 @@ For example, if we consider a sine wave with frequency 5 Hertz, $\sin(2\pi \cdot
 %do i explain quantization here?
 
 In the time domain, a sampled signal looks like discrete spikes (Figure 1). 
-\begin{figure}
+\begin{figure} %TODO: not sure if i should change this plot so that it has the og signal on the left and the sampled signal on the right, but maybe make it above shannon hyquist so that ppl actually get a sense of what happens
     \includegraphics[width=\linewidth]{images/ogvssampled_BIG.png}
     \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 5 Hertz}
     \label{fig:grid}
@@ -167,7 +175,7 @@ Users can set \verb|plot_one| to \verb|True| if they wish to visualize the origi
 and \verb|plot_two| to \verb|True| if they wish to just visualize the sampled points.
 
 Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
-and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [1].
+and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [2].
 The Fourier Transform, whose purpose is to transform a signal from the time domain to a signal in the frequency domain, is defined as
 \begin{center}
     \begin{math}
@@ -220,7 +228,7 @@ The signal $x(t)$ can therefore be recovered in the following way:
 which is the approach implemented in the \verb|reconstruction| function. Because it is not possible to perform an infinite sum, I must loop over a finite number of iterations. Mathematically, this looks like
 \begin{center}
     \begin{math}
-        x(t) = \displaystyle\sum_{n}^{} x[n] \text{sinc}\left( F_st - n \right)
+        x(t) = \displaystyle\sum_{n}^{} x[n]\, \text{sinc}\left( F_st - n \right)
     \end{math}  
 \end{center}
 where $F_s = 1/T_s$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
@@ -234,8 +242,9 @@ where $F_s = 1/T_s$ and $x[n]$ is the value of the signal at the $n$-th sampling
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
 
-\begin{thebibliography}{9} %TODO turn to MLA
-    \bibitem{1} MacLeod, Cameron. “Fourier Transforms with Scipy.Fft: Python Signal Processing.” Real Python, Real Python, 1 Sept. 2022, realpython.com/python-scipy-fft/. Accessed 13 Apr. 2025. 
+\begin{thebibliography}{9}
+    \bibitem{citekey} Fiveable. ``Signal Digitization – Biomedical Engineering II." Edited by Becky Bahr, Fiveable, 2024, https://fiveable.me/key-terms/biomedical-engineering-ii/signal-digitization. Accessed 22 Apr. 2025.
+    \bibitem{citekey} MacLeod, Cameron. “Fourier Transforms with Scipy.Fft: Python Signal Processing.” Real Python, Real Python, 1 Sept. 2022, realpython.com/python-scipy-fft/. Accessed 13 Apr. 2025. 
 \end{thebibliography}
 
 \section{Appendix}
