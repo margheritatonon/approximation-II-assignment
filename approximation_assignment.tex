@@ -78,7 +78,13 @@ In the time domain, a sampled signal looks like discrete spikes (Figure 1).
     \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 10 Hz.}
     \label{fig:grid}
 \end{figure}
-The Fourier Transform allows us to transition from the time domain into the frequency domain, and therefore, to visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
+The Fourier Transform, defined as
+\begin{center}
+    \begin{math}
+       X(f) = \displaystyle \int_{-\infty}^{\infty} x(t)e^{-i2\pi ft}\, dt
+    \end{math}
+\end{center}
+allows us to transition from the time domain into the frequency domain. In order to visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
 
 The Inverse Convolution Theorem states that if we have two functions $x(t)$ and $h(t)$ whose Fourier Transforms $\mathcal{F}(x(t))$ and $\mathcal{F}(h(t))$ are absolutely integrable in the frequency domain,
 then 
@@ -182,13 +188,7 @@ and \verb|plot_two| to \verb|True| if they wish to just visualize the sampled po
 
 Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
 and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [2].
-The Fourier Transform, whose purpose is to transform a signal from the time domain to a signal in the frequency domain, is defined as
-\begin{center}
-    \begin{math}
-       X(f) = \displaystyle \int_{-\infty}^{\infty} x(t)e^{-i2\pi ft}\, dt
-    \end{math}
-\end{center}
-and it integrates a signal over all time (from $-\infty$ to $+\infty$) and requires a signal to be continuous. 
+The Fourier Transform integrates a signal over all time (from $-\infty$ to $+\infty$) and requires a signal to be continuous. 
 However, in many practical situations, such as our current scenario, we work with finite and discrete signals. 
 The Discrete Fourier Transform allows us to numerically compute the Fourier Transform for a finite time interval, 
 and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform. 
