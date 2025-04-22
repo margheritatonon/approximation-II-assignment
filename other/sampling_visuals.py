@@ -5,8 +5,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sampling_aliasing import generate_signal, xf, yf
 
-frequency = 2
-sampling_frequency = 10
+frequency = 5
+sampling_frequency = 12
 t_continuous, x_continuous = generate_signal(2, frequency, plot = True)
 
 def sample_signal(x, t, fs, plot_one = False):
@@ -96,8 +96,32 @@ def filtering(yf:np.array, xf:np.array, fl:float, fh:float, plot = False):
 
     return yf_filtered
 
+
+def frequency_domain_plot(x_continuous, t_continuous):
+    """
+    Plots the frequency domain representation of the continuous signal.
+    """
+    dt = t_continuous[1] - t_continuous[0]
+    fs = 1 / dt #the sampling frequency
+    N = len(x_continuous) #number of samples
+    X = np.fft.fft(x_continuous)
+    X_magnitude = np.abs(X) / N
+    freqs = np.fft.fftfreq(N, d=dt)
+
+    plt.figure(figsize=(15, 5))
+    plt.plot(freqs, X_magnitude)
+    plt.title(f"Frequency Domain of 5Hz Sine Wave", fontsize=25)
+    plt.xlabel("Frequency (Hz)", fontsize=18)
+    plt.ylabel("Magnitude", fontsize=18)
+    plt.grid(True)
+    plt.xlim(-10, 10)
+    plt.show()
+
+
 if __name__ == "__main__":
 
     sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True)
 
     filtering(yf, xf, 1, 5, plot = True)
+
+    frequency_domain_plot(x_continuous, t_continuous)
