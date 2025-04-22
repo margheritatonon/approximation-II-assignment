@@ -27,14 +27,7 @@ def generate_signal(t_end, frequency, plot = False):
         plt.show()
     return t, x
 
-t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
-print(f"len(x_continuous) = {len(x_continuous)}")
-
 #2: SAMPLING
-#we know that to avoid aliasing, we should have fs > 2 * B
-nyquist_shannon_threshold = 2 * frequency 
-print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
-
 def sample_signal(x, t, fs, plot_one = False, plot_two = False, plot_three = False):
     """
     Samples the continuous time signal x at a sampling frequency fs.
@@ -86,15 +79,13 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False, plot_three = Fal
 
     return t_sampled, x_sampled
 
-t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
-
 #3: FOURIER TRANSFORM
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
 #we need to compute the FFT of the signals
 
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
-    Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf).
+    Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf) of the sampled signal.
     If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
@@ -118,17 +109,22 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
             magnitude_tiled.extend(magnitude_shifted)
         
         #plotting
-        plt.figure(figsize=(10, 4))
+        plt.figure(figsize=(15, 5.5))
         plt.plot(xf_tiled, magnitude_tiled)
-        plt.title("Frequency Domain Representation of Sampled Signal")
-        plt.xlabel("Frequency (Hertz)")
+        plt.title(f"Frequency Domain Representation of {sampling_freq}Hz Sampled Signal", size = 30)
+        plt.xlabel("Frequency (Hertz)", size = 20)
         plt.grid(True)
         plt.axvline(x=0, color='gray', linestyle='--', linewidth=1)
+       
+        #for axis ticks of multiples of 2
+        x_min, x_max = plt.xlim()
+        tick_start = np.ceil(x_min / 2) * 2 
+        tick_end = np.floor(x_max / 2) * 2 
+        plt.xticks(np.arange(tick_start, tick_end + 1, 2))
+
         plt.show()
 
     return yf, xf
-
-yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 4, plot = True)
 
 
 #4: RECONSTRUCTION
@@ -156,4 +152,18 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
 
     return x_s
 
-x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
+if __name__ == "__main__":
+
+    t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
+    print(f"len(x_continuous) = {len(x_continuous)}")
+
+    #we know that to avoid aliasing, we should have fs > 2 * B
+    nyquist_shannon_threshold = 2 * frequency 
+    print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
+
+    t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
+
+    yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
+
+    x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
+
