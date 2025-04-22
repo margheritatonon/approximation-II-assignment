@@ -267,7 +267,47 @@ We begin by observing a continuous time signal: a sine wave with frequency 5 Her
     \caption{Sine wave with frequency 5 Hz.}
     \label{fig:enter-label}
 \end{figure}
+According to the Shannon-Nyquist theorem, if we sample the signal at a frequency greater than $2\cdot 5 = 10$ Hz, we can perfectly reconstruct the signal.
+Sampling the sine wave with a sampling frequency of 7 Hz, less than the Shannon-Nyquist threshold, is seen in Figure 3. 
+Sampling the sine wave with a sampling frequency of 12 Hz, greater than the Shannon-Nyquist threshold, is seen in Figure 4.
 
+%TODO: when the paper is done being written, need to fix the formatting of these images. also need to add code before you fix it.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/sampled_12hz_1.png}
+        \\[0.5em] % optional spacing between rows
+    \end{minipage}
+    
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/sampled_12hz_2.png}
+    \end{minipage}
+    
+    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz.}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/sampled_7hz_1.png}
+        \\[0.5em] % optional spacing between rows
+    \end{minipage}
+    
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/sampled_7hz_2.png}
+    \end{minipage}
+    
+    \caption{Visualization of the sampling a continuous time signal with a sampling frequency 7 Hz.}
+\end{figure}
+
+
+%maybe it could be useful to somewhere have like when u use 7hz u could actually construct multiple sine waves that pass through the points. could u code this?
 
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
