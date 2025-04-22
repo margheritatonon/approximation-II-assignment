@@ -321,13 +321,15 @@ As expected, the time domain representation of the signal sampled at 12 Hz has m
 %this is the expected behaviour as a sampling frequency of 12 Hz 
 %this is the expected behaviour as 12 Hz being a higher sampling frequency than 7 Hz means that the signal is sampled more times across a given time interval (here being 2 seconds). 
 
-In the frequency domain, the 5Hz sine wave looks like two spikes at 5 and -5 Hz (Figure 4).
+In the frequency domain, the original 5 Hz sine wave looks like two spikes at 5 and -5 Hz (Figure 4).
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{images/freqdomain_5hz.png}
-    \caption{Sine wave with frequency 5 Hz.}
+    \caption{Frequency domain representation of sine wave with frequency 5 Hz.}
     \label{fig:enter-label}
 \end{figure}
 
+Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
+The top row is all frequencies above the Shannon-Nyquist threshold, whereas the bottom row is all sampling frequencies below the Shannon-Nyquist threshold.
 
 %maybe it could be useful to somewhere have like when u use 7hz u could actually construct multiple sine waves that pass through the points. could u code this?
 
