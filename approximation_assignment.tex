@@ -223,7 +223,23 @@ Evaluating this integral,
         h(t) = \frac{1}{\pi t} \left[ \sin(2\pi f_h t) - \sin(2\pi f_l t) \right]
     \end{math}  
 \end{center}
-This is the difference of two sinc-like functions. 
+This is equivalent to the difference of two sinc-like functions:
+\begin{center}
+    \begin{math}
+        h(t) = 2f_h \cdot \text{sinc}\left( 2 f_h t \right) - 2f_l \cdot \text{sinc}\left( 2 f_l t \right)
+    \end{math}  
+\end{center}
+In a lowpass filter, we pass all frequencies below a specified frequency $f_l$. 
+This is essentially like using a bandpass filter with boundaries $f_l = 0$ and $f_h = f_l$:
+\begin{center}
+    \begin{math}
+        h(t) = 2f_l \cdot \text{sinc}\left( 2 f_l t \right) - 2 \cdot 0 \cdot \text{sinc}\left( 2 \cdot 0 \cdot t \right) = 2f_l \cdot \text{sinc}\left( 2 f_l t \right)
+    \end{math}  
+\end{center}
+
+As previously explained, sampling a signal in the frequency domain corresponds to taking copies of the Fourier Transform of the signal, and shifting them to multiples of the sampling frequency.
+The baseband signal is going to lie around 0, as this is the first ``copy'' of the signal
+
 %TODO: understand the link between the difference of two sinc like functions and the following sentence that we can just recover the signal like this:
 The signal $x(t)$ can therefore be recovered in the following way:
 \begin{center}
