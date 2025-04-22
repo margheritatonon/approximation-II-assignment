@@ -3,6 +3,7 @@
 \usepackage[a4paper, margin=1.2in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{float}
 
 %\usepackage{listings}
 
@@ -61,16 +62,21 @@ The Shannon-Nyquist theorem states that a signal can be perfectly reconstructed 
         f_s > 2B
     \end{math}  
 \end{center}
-For example, if we consider a sine wave with frequency 5 Hertz, $\sin(2\pi \cdot 5 \cdot t)$, once sampled it can be perfectly reconstructed if the sampling frequency is greater than 10.
+For example, if we consider a sine wave with frequency 2 Hertz (Hz), $\sin(2\pi \cdot 2 \cdot t)$, once sampled it can be perfectly reconstructed if the sampling frequency is greater than 4 Hz.
 
 %do i explain quantization here?
 
 In the time domain, a sampled signal looks like discrete spikes (Figure 1). 
-\begin{figure} %TODO: not sure if i should change this plot so that it has the og signal on the left and the sampled signal on the right, but maybe make it above shannon hyquist so that ppl actually get a sense of what happens
-    \includegraphics[width=\linewidth]{images/ogvssampled_BIG.png}
-    \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 5 Hertz}
-    \label{fig:grid}
+%\begin{figure} %TODO: not sure if i should change this plot so that it has the og signal on the left and the sampled signal on the right, but maybe make it above shannon hyquist so that ppl actually get a sense of what happens
+%    \includegraphics[width=\linewidth]{images/ogvssampled_BIG.png}
+%    \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 5 Hertz}
+%    \label{fig:grid}
+%\end{figure}
 
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{images/leftright_ogsampled.png}
+    \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 10 Hz.}
+    \label{fig:grid}
 \end{figure}
 The Fourier Transform allows us to transition from the time domain into the frequency domain, and therefore, to visualize what sampling looks like in the frequency domain, we make use of the Inverse Convolution Theorem.
 

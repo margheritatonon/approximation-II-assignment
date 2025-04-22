@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745287430.21137 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1745287430.56642 0
+["pdflatex"] 1745288519.36485 "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" "approximation_assigment.pdf" "approximation_assigment" 1745288519.69341 0
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -63,6 +63,7 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo" 1738182759 8448 5cf247d4bd0c7d5d711bbbdf111fae2e ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1739279216 46850 d87daedc2abdc653769a6f1067849fe0 ""
+  "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def" 1713382759 19440 9da9dcbb27470349a580fca7372d454b ""
@@ -87,11 +88,11 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1740194047 92935 ab22f987f93038b61e05dc32d7c07157 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1740220808 1928676 6282b037fa4075742b448fcb64c0e6d1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf.cnf" 1740220793.40005 708 85fd07691b6294ba94c59dbc62380410 ""
-  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1745287430.02329 16134 9223df347ea4856215332581228d1ebe ""
-  "approximation_assigment.aux" 1745287430.52867 1201 28ca1af194079e018d5033b54ed54f28 "pdflatex"
-  "approximation_assigment.out" 1745287430.52911 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
-  "approximation_assigment.tex" 1745287430.02329 16134 9223df347ea4856215332581228d1ebe ""
-  "images/ogvssampled_BIG.png" 1744457345.65553 87696 660a635a7daeb32f77f27cfbfb751b7c ""
+  "/Users/margheritatonon/approximation-II-assignment/approximation_assigment.tex" 1745288518.7962 16400 0386b6ccdcc77ed48997a7b1e72b03b0 ""
+  "approximation_assigment.aux" 1745288519.65375 1198 7c012c492bc72ae046535b931b7a47d8 "pdflatex"
+  "approximation_assigment.out" 1745288519.65428 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
+  "approximation_assigment.tex" 1745288518.7962 16400 0386b6ccdcc77ed48997a7b1e72b03b0 ""
+  "images/leftright_ogsampled.png" 1745288217.67019 62731 0a02d3321566ffbe2addd9fe38a5958f ""
   (generated)
   "approximation_assigment.aux"
   "approximation_assigment.log"
