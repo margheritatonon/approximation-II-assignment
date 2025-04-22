@@ -135,4 +135,4 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
 
     return x_s
 
-x_s = reconstruction(x_sampled, t_sampled, x_continuous, t_continuous, plot = True)
+x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
