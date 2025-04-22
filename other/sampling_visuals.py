@@ -1,9 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from sampling_aliasing import generate_signal, xf, yf
 
 frequency = 2
-sampling_frequency = 5
+sampling_frequency = 10
 t_continuous, x_continuous = generate_signal(2, frequency, plot = True)
 
 def sample_signal(x, t, fs, plot_one = False):
@@ -30,7 +33,41 @@ def sample_signal(x, t, fs, plot_one = False):
     
     return t_sampled, x_sampled
 
-sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True)
+def left_right_signal(x, t, fs, plot = False):
+    """
+    Sampled the continuous time signal x at a rate fs.
+    t: the time interval of the sampled signal x
+    If plot == True, plots the original signal on the left and the sampled signal on the right.
+    """
+    Ts = 1/fs 
+    t_sampled = np.arange(t[0], t[-1], Ts)
+    x_sampled = np.interp(t_sampled, t, x)
+
+    if plot == True:
+        fig, axs = plt.subplots(1, 2, figsize=(14, 5))
+
+        axs[0].plot(t, x, label="Original", color='blue')
+        axs[0].set_title(f"Original Signal ({frequency} Hz)", fontsize=20)
+        axs[0].set_xlabel("Time (s)", fontsize=14)
+        axs[0].set_ylabel("Amplitude", fontsize=14)
+        axs[0].axhline(0, ls = "--", color="gray")
+        axs[0].grid(True)
+        #axs[0].legend()
+
+        axs[1].stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None', label="Sampled")
+        axs[1].set_title(f"Sampled Signal ({sampling_frequency} Hz)", fontsize=20)
+        axs[1].set_xlabel("Time (s)", fontsize=14)
+        axs[1].set_ylabel("Amplitude", fontsize=14)
+        axs[1].axhline(0, ls = "--", color="gray")
+        axs[1].grid(True)
+        #axs[1].legend()
+
+        plt.tight_layout()
+        plt.show()
+    
+    return t_sampled, x_sampled
+
+left_right_signal(x_continuous, t_continuous, sampling_frequency, plot = True)
 
 
 #TODO: make it compatible with the function that plots the different frequencies
@@ -59,4 +96,8 @@ def filtering(yf:np.array, xf:np.array, fl:float, fh:float, plot = False):
 
     return yf_filtered
 
-filtering(yf, xf, 1, 5, plot = True)
+if __name__ == "__main__":
+
+    sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True)
+
+    filtering(yf, xf, 1, 5, plot = True)
