@@ -35,13 +35,14 @@ print(f"len(x_continuous) = {len(x_continuous)}")
 nyquist_shannon_threshold = 2 * frequency 
 print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
 
-def sample_signal(x, t, fs, plot_one = False, plot_two = False):
+def sample_signal(x, t, fs, plot_one = False, plot_two = False, plot_three = False):
     """
     Samples the continuous time signal x at a sampling frequency fs.
     t: the time interval of the sampled signal x
     Returns the time and amplitude arrays of the sampled signal
     If plot_one == True, plots the continuous signal along with the sampled points.
     If plot_two == True, plots the sampled points only.
+    If plot_three == True, plots plot 1 and plot 2 side by side.
     """
     Ts = 1/fs #defining the sampling period
     t_sampled = np.arange(t[0], t[-1], Ts) #the sampled time points
@@ -66,9 +67,26 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
         plt.ylabel("Amplitude", size = 20)
         plt.grid(True)
         plt.show()
+    if plot_three == True:
+        fig, axs = plt.subplots(1, 2, figsize=(14, 5))
+
+        axs[0].plot(t, x, label = "Continuous")
+        axs[0].stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
+        axs[0].set_xlabel("Time", size = 20)
+        axs[0].set_ylabel("Amplitude", size = 20)
+        axs[0].grid(True)
+
+        axs[1].stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
+        axs[1].set_xlabel("Time", size = 20)
+        axs[1].grid(True)
+
+        fig.suptitle(f"Sampled Signal with Sampling Frequency {fs} Hz", size = 30)
+        plt.tight_layout()
+        plt.show()
+
     return t_sampled, x_sampled
 
-t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True)
+t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
 
 #3: FOURIER TRANSFORM
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
