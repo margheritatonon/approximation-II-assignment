@@ -18,10 +18,11 @@ def generate_signal(t_end, frequency, plot = False):
     t = np.linspace(0, t_end, int(5000 * t_end))
     x = np.sin(2 * np.pi * frequency * t)
     if plot == True:
+        plt.figure(figsize=(12, 6))
         plt.plot(t, x)
-        plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz")
-        plt.xlabel("Time")
-        plt.ylabel("Amplitude")
+        plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz", size = 25)
+        plt.xlabel("Time", size = 20)
+        plt.ylabel("Amplitude", size = 20)
         plt.grid(True)
         plt.show()
     return t, x
