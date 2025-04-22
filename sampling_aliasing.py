@@ -94,7 +94,7 @@ t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_freque
 
 def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = False):
     """
-    Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf).
+    Returns the Fast Fourier Transform array (yf) and the corresponding frequncy values (xf) of the sampled signal.
     If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
