@@ -27,14 +27,7 @@ def generate_signal(t_end, frequency, plot = False):
         plt.show()
     return t, x
 
-t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
-print(f"len(x_continuous) = {len(x_continuous)}")
-
 #2: SAMPLING
-#we know that to avoid aliasing, we should have fs > 2 * B
-nyquist_shannon_threshold = 2 * frequency 
-print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
-
 def sample_signal(x, t, fs, plot_one = False, plot_two = False, plot_three = False):
     """
     Samples the continuous time signal x at a sampling frequency fs.
@@ -86,8 +79,6 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False, plot_three = Fal
 
     return t_sampled, x_sampled
 
-t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
-
 #3: FOURIER TRANSFORM
 #Applying the Fourier Transform to visualize the continuous and the sampled signal
 #we need to compute the FFT of the signals
@@ -135,8 +126,6 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
 
     return yf, xf
 
-yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
-
 
 #4: RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
@@ -163,4 +152,18 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
 
     return x_s
 
-x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
+if __name__ == "__main__":
+
+    t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
+    print(f"len(x_continuous) = {len(x_continuous)}")
+
+    #we know that to avoid aliasing, we should have fs > 2 * B
+    nyquist_shannon_threshold = 2 * frequency 
+    print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
+
+    t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
+
+    yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
+
+    x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
+
