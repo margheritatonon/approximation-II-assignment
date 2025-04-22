@@ -48,20 +48,22 @@ def sample_signal(x, t, fs, plot_one = False, plot_two = False):
     x_sampled = np.interp(t_sampled, t, x) #using np.interp to sample
 
     if plot_one == True:
+        plt.figure(figsize=(12, 6))
         plt.plot(t, x, label = "Continuous")
         #plt.scatter(t_sampled, x_sampled, label = "Sampled", color = "red")
         plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
-        plt.title(f"Sampled Continuous Time Signal with Sampling Frequency {fs} Hz")
-        plt.xlabel("Time")
-        plt.ylabel("Amplitude")
+        plt.title(f"Sampled Continuous Time Signal with Sampling Frequency {fs} Hz", size = 25)
+        plt.xlabel("Time", size = 20)
+        plt.ylabel("Amplitude", size = 20)
         plt.grid(True)
         #plt.legend()
         plt.show()
     if plot_two == True:
+        plt.figure(figsize=(12, 6))
         plt.stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None')
-        plt.title(f"Sampled Signal with Sampling Frequency {fs} Hz")
-        plt.xlabel("Time")
-        plt.ylabel("Amplitude")
+        plt.title(f"Sampled Signal with Sampling Frequency {fs} Hz", size = 25)
+        plt.xlabel("Time", size = 20)
+        plt.ylabel("Amplitude", size = 20)
         plt.grid(True)
         plt.show()
     return t_sampled, x_sampled
