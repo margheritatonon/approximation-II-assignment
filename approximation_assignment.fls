@@ -176,6 +176,11 @@ INPUT ./images/sampled_7hz_3.png
 INPUT ./images/sampled_7hz_3.png
 INPUT ./images/sampled_7hz_3.png
 INPUT ./images/sampled_7hz_3.png
+INPUT ./images/freqdomain_5hz.png
+INPUT ./images/freqdomain_5hz.png
+INPUT ./images/freqdomain_5hz.png
+INPUT ./images/freqdomain_5hz.png
+INPUT ./images/freqdomain_5hz.png
 INPUT approximation_assignment.aux
 INPUT ./approximation_assignment.out
 INPUT ./approximation_assignment.out
