@@ -120,7 +120,7 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
         x_min, x_max = plt.xlim()
         tick_start = np.ceil(x_min / 2) * 2 
         tick_end = np.floor(x_max / 2) * 2 
-        plt.xticks(np.arange(tick_start, tick_end + 1, 2))
+        plt.xticks(np.arange(tick_start, tick_end + 1, 2), size = 10) #size parameter to control for font size
 
         plt.show()
 
