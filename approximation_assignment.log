@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  23 APR 2025 00:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  28 APR 2025 13:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -255,10 +255,10 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Label `fig:enter-label' multiply defined.
 
 
-LaTeX Warning: Label `citekey' multiply defined.
-
-
 LaTeX Warning: Label `fig:enter-label' multiply defined.
+
+
+LaTeX Warning: Label `citekey' multiply defined.
 
 )
 \openout1 = `approximation_assignment.aux'.
@@ -374,13 +374,36 @@ Package pdftex.def Info: images/freqdomain_5hz.png  used on input line 326.
 
 
 [5 <./images/sinewave_5hz.png> <./images/sampled_12hz_3.png> <./images/sampled_7hz_3.png>]
+<images/freqdom_20hz.png, id=74, 1040.688pt x 397.485pt>
+File: images/freqdom_20hz.png Graphic file (type png)
+<use images/freqdom_20hz.png>
+Package pdftex.def Info: images/freqdom_20hz.png  used on input line 338.
+(pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
+<images/freqdom_12hz.png, id=75, 1040.688pt x 397.485pt>
+File: images/freqdom_12hz.png Graphic file (type png)
+<use images/freqdom_12hz.png>
+Package pdftex.def Info: images/freqdom_12hz.png  used on input line 339.
+(pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
+<images/freqdom_7hz.png, id=76, 1040.688pt x 397.485pt>
+File: images/freqdom_7hz.png Graphic file (type png)
+<use images/freqdom_7hz.png>
+Package pdftex.def Info: images/freqdom_7hz.png  used on input line 345.
+(pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
+<images/freqdom_3hz.png, id=77, 1040.688pt x 397.485pt>
+File: images/freqdom_3hz.png Graphic file (type png)
+<use images/freqdom_3hz.png>
+Package pdftex.def Info: images/freqdom_3hz.png  used on input line 346.
+(pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
 
-[6
+
+[6 <./images/freqdomain_5hz.png> <./images/freqdom_20hz.png> <./images/freqdom_12hz.png> <./images/freqdom_7hz.png> <./images/freqdom_3hz.png>]
+
+[7
 pdfTeX warning (ext4): destination with the same identifier (name{cite.citekey}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.350 \end{document}
-                     <./images/freqdomain_5hz.png>] (./approximation_assignment.aux)
+l.379 \end{document}
+                    ] (./approximation_assignment.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -393,18 +416,18 @@ Package rerunfilecheck Info: File `approximation_assignment.out' has not changed
 (rerunfilecheck)             Checksum: 832650D5AC6D3075BC61B37F6543EEA9;578.
  ) 
 Here is how much of TeX's memory you used:
- 9983 strings out of 475172
- 154969 string characters out of 5764325
+ 10013 strings out of 475172
+ 155805 string characters out of 5764325
  557254 words of memory out of 5000000
- 32850 multiletter control sequences out of 15000+600000
+ 32878 multiletter control sequences out of 15000+600000
  566253 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,79p,422b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,422b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on approximation_assignment.pdf (6 pages, 526503 bytes).
+Output written on approximation_assignment.pdf (7 pages, 888037 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 20 named destinations out of 1000 (max. 500000)
- 74 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

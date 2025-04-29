@@ -192,7 +192,7 @@ However, in many practical situations, such as our current scenario, we work wit
 The Discrete Fourier Transform allows us to numerically compute the Fourier Transform for a finite time interval, 
 and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform. 
 Therefore, in the \verb|sampled_fourier_transform| function, \verb|yf| is a complex array representing the sampled signal \verb|x_sampled| in the frequency domain, 
-and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to.
+and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to. %i think that maybe it has something to do with ck of the DFT? not sure tho
 If \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
 %code block
 
@@ -330,6 +330,31 @@ In the frequency domain, the original 5 Hz sine wave looks like two spikes at 5 
 
 Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
 The top row is all frequencies above the Shannon-Nyquist threshold, whereas the bottom row is all sampling frequencies below the Shannon-Nyquist threshold.
+%TODO: need to reformat this so its 2x2
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/freqdom_20hz.png}
+        \includegraphics[width=\linewidth]{images/freqdom_12hz.png}
+        \\[0.5em] 
+    \end{minipage}
+    
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/freqdom_7hz.png}
+        \includegraphics[width=\linewidth]{images/freqdom_3hz.png}
+    \end{minipage}
+    
+    \caption{Frequency domain representation of sampled signal at different sampling rates.}
+\end{figure}
+
+We can observe that the higher the sampling frequency, the 
+When the sampling frequency is above the Shannon-Nyquist threshold, the frequencies closest to 0 are -5 and 5 Hz, which is the true frequency of the original signal (). %insert label of plot here, e.g. top right). 
+However, when the sampling frequency is below this threshold, the frequencies closest to 0 are no longer -5 and 5 Hz. 
+For example, in the plot of sampling frequency 7 Hz (), we see that the frequencies closest to 0 are 2 and -2, and in the plot of sampling frequency 3 Hz (), we see they are 1 and -1 Hz. 
+This becomes an issue when a filter is applied to recover the original signal. 
+%give explanation 
 
 %maybe it could be useful to somewhere have like when u use 7hz u could actually construct multiple sine waves that pass through the points. could u code this?
 
@@ -337,14 +362,18 @@ The top row is all frequencies above the Shannon-Nyquist threshold, whereas the 
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
 
 \begin{thebibliography}{9}
-    \bibitem{citekey} Fiveable. ``Signal Digitization – Biomedical Engineering II." Edited by Becky Bahr, Fiveable, 2024, https://fiveable.me/key-terms/biomedical-engineering-ii/signal-digitization. Accessed 22 Apr. 2025.
+    \bibitem{citekey} Fiveable. ``Signal Digitization -- Biomedical Engineering II." Edited by Becky Bahr, Fiveable, 2024, https://fiveable.me/key-terms/biomedical-engineering-ii/signal-digitization. Accessed 22 Apr. 2025.
     \bibitem{citekey} MacLeod, Cameron. “Fourier Transforms with Scipy.Fft: Python Signal Processing.” Real Python, Real Python, 1 Sept. 2022, realpython.com/python-scipy-fft/. Accessed 13 Apr. 2025. 
 \end{thebibliography}
+
+%np.interp: https://numpy.org/doc/2.1/reference/generated/numpy.interp.html
 
 \section{Appendix}
 \begin{enumerate}
     \item Access the GitHub repository with all code \href{https://github.com/margheritatonon/approximation-II-assignment}{here}.
 \end{enumerate}
+
+
 
 
 \end{document}
