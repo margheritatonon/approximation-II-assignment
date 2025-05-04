@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745839398.24907 "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" "approximation_assignment.pdf" "approximation_assignment" 1745839399.36441 0
+["pdflatex"] 1746356726.36141 "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" "approximation_assignment.pdf" "approximation_assignment" 1746356727.54519 0
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -88,10 +88,10 @@
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1740194047 92935 ab22f987f93038b61e05dc32d7c07157 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1740220808 1928676 6282b037fa4075742b448fcb64c0e6d1 ""
   "/Users/margheritatonon/Library/TinyTeX/texmf.cnf" 1740220793.40005 708 85fd07691b6294ba94c59dbc62380410 ""
-  "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" 1745839398.07238 22097 75c5acb70821f2a8b629cdd85fb30cbc ""
-  "approximation_assignment.aux" 1745839399.32046 2221 6d0932f982ab3374cec21b48c1d55dad "pdflatex"
-  "approximation_assignment.out" 1745839399.32105 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
-  "approximation_assignment.tex" 1745839398.07238 22097 75c5acb70821f2a8b629cdd85fb30cbc ""
+  "/Users/margheritatonon/approximation-II-assignment/approximation_assignment.tex" 1746356726.31067 24239 a87fdb1aa94bf3525ee066ec120962d3 ""
+  "approximation_assignment.aux" 1746356727.49876 2221 6d0932f982ab3374cec21b48c1d55dad "pdflatex"
+  "approximation_assignment.out" 1746356727.49939 578 832650d5ac6d3075bc61b37f6543eea9 "pdflatex"
+  "approximation_assignment.tex" 1746356726.31067 24239 a87fdb1aa94bf3525ee066ec120962d3 ""
   "images/freqdom_12hz.png" 1745837715.51716 75654 fb6f3fca4849f0260fc396bd9d3ade6a ""
   "images/freqdom_20hz.png" 1745838304.75691 76597 dcd081b530264825d393457ec0019eee ""
   "images/freqdom_3hz.png" 1745838103.46361 80423 7dc4161c29efb7b88e601963e0f38713 ""

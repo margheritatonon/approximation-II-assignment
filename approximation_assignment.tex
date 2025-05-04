@@ -94,7 +94,7 @@ then
     \end{math}  
 \end{center}
 where $*$ denotes the convolution operator. 
-Consequently, and if $x(t)$ and $h(t)$ are absolutely integrable and the Fourier Transform of their product exists,
+Consequently, if $x(t)$ and $h(t)$ are absolutely integrable and the Fourier Transform of their product exists,
 \begin{center}
     \begin{math}
         X(f) * H(f) = \mathcal{F}\left(x(t) \cdot h(t)\right)
@@ -135,26 +135,36 @@ Convolution of a function with a delta function shifts the function by the offse
 
 We can therefore observe how the representation of a sampled signal in the frequency domain is simply the Fourier Transform of the signal, duplicated and shifted to multiples of the sampling frequency.
 
-To recover the original signal from the sampled signal, we apply an ideal band pass filter,
-\begin{center}
-    \begin{math}
-        H(f) =
-        \begin{cases}
-            1 \; \text{if} \; f_l < f < f_h \\
-            0 \; \text{otherwise}
-        \end{cases}
-    \end{math}  
-\end{center}
+When recovering the original signal, we assume that the Shannon-Nyquist condition is met. 
+Because $f_s > 2B$, the original signal has to be contained within the range of frequencies $\frac{-f_s}{2}$ and $\frac{f_s}{2}$, as $\frac{-f_s}{2} < -B$ and  $\frac{f_s}{2} > B$. 
+Because the frequency domain representation of a signal has the frequency of the signal as well as the negative frequency of the signal, we only need to consider the positive frequencies: $0$ to $\frac{f_s}{2}$ Hz. %todo: rephrase
+We therefore apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2} = \frac{1}{2T}$.
+In the frequency domain, we would multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the signal.
 
-which essentially only passes the frequencies between $f_l$ and $f_h$ Hertz and ignores all other frequencies outside of this range.
-We then perform an inverse Fourier Transform on the signal and we will have recovered the original signal.
+Nonetheless, the frequency domain representation of the sampled signal and the low pass filter highlight the need for the Shannon-Nyquist theorem.
+When filtering a sampled signal, we effectively only see and select the frequencies between $\frac{-f_s}{2}$ to $\frac{f_s}{2}$.
+If $f_s = 2B$, this range becomes $[-B, B]$, and therefore all of the frequency components of the original signal are included.
+However, when $f_s < 2B$, the filter will select frequencies on a range $[-a, a]$, where $a < B$. Clearly, $B$ is not included within this range and we end up missing part of the original spectrum.
+We recall that sampling in the frequency domain replicates the original spectrum $X(f)$ at every integer multiple of $f_s$.
+If $f_s$ is too small, some copied frequencies will shift into in the interval $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ -- this is known as folding.
+When filtering, these folded frequencies will be wrongly interpreted as the original signal's frequency, and therefore the original signal will not be reconstructed correctly.
+The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing.
+On the other hand, if $f_s > 2B$, the range $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ fully contains $\left[-B, B \right]$. 
+Because $f_s$ is sufficiently large, the shifted copies will not land inside $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$, and the original signal can be reconstructed perfectly.
 
-Nonetheless, the frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
-When our sampling frequency is sufficiently large, the process of copying and shifting the frequencies occurs at larger intervals, meaning the copied frequencies are more spread out. 
-As a result, it is possible to apply an ideal filter to recover the original frequencies. 
-However, if the sampling frequency decreases, the interval between frequencies is not as large and they may overlap. It is therefore no longer possible to apply an ideal filter to recover the original frequencies, as the original signal and the duplicated frequencies overlap and interfere with each other.
-This phenomenon is known as aliasing: the act of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra. %maybe use a diff definition cause this is rly similar to the one on the slides
-As long as we set $f_s > 2B$, however, the signal can be perfectly recovered. 
+%When $f_s < 2B$, the filter will select frequencies between a value larger than $-B$ to a value smaller than $B$. Clearly, $B$ is not contained within this range. 
+%Recalling that sampling in the frequency domain looks like copying and shifting the Fourier transform of the original signal, a small sampling frequency will cause some copied frequencies to land within the range $[\frac{-f_s}{2}, \frac{f_s}{2}]$ -- this is known as folding.
+%When filtering, these folded frequencies will be wrongly interpreted as the original signal's frequency, and therefore the original signal will not be reconstructed correctly.
+%The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing.
+%If $f_s > 2B$, the largest frequency component of the original signal will be in the selected frequency range, as the ranges will go from a value less than $B$ to a value greater than $B$.
+%Folding will not occur here as the process of copying and shifting the frequencies occurs at larger intervals, meaning the copied frequencies are more spread out, and the shifted copies of the spectrum do not land inside $[\frac{-f_s}{2}, \frac{f_s}{2}]$.
+
+%Nonetheless, the frequency domain representation of the sampled signal highlights the need for the Shannon-Nyquist theorem. %maybe not "need" but like utility/usefulness or something
+%When our sampling frequency is sufficiently large, the process of copying and shifting the frequencies occurs at larger intervals, meaning the copied frequencies are more spread out. 
+%As a result, it is possible to apply an ideal filter to recover the original frequencies. 
+%However, if the sampling frequency decreases, the interval between frequencies is not as large and they may overlap. It is therefore no longer possible to apply an ideal filter to recover the original frequencies, as the original signal and the duplicated frequencies overlap and interfere with each other.
+%This phenomenon is known as aliasing: the act of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra. %maybe use a diff definition cause this is rly similar to the one on the slides
+%As long as we set $f_s > 2B$, however, the signal can be perfectly recovered. 
 
 %maybe give an example of aliasing happening, like the one we saw in class?
 
@@ -202,57 +212,45 @@ If users wish to plot the reconstructed signal together with the original signal
 %code block here
 
 In the code, I reconstruct the signal in the time domain using the sinc function.
-The sinc function, defined as $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$, is utilized as it is the time domain representation of the ideal band pass filter $H(f)$.
-%in one of the summary sheets you have more about this --> say why u are using it like that? and no convolution or something?
-The sinc function is the result of taking the inverse Fourier Transform of the ideal band pass filter:
+Previously, we mentioned that we must apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2}$ to recover the signal.
+The convolution theorem states that if $x(t)$ and $h(t)$ are two absolutely integrable functions in $\mathcal{L}^1$, and if their Fourier transforms $X(f) = \mathcal{F}(x(t))$ and $H(f) = \mathcal{F}(h(t))$ exist and are well defined,
 \begin{center}
     \begin{math}
-        h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) e^{2\pi i ft} df
-    \end{math}  
+       \displaystyle \mathcal{F}\{ x(t) * h(t) \} = X(f) \cdot H(f)
+    \end{math}
 \end{center}
-$H(f)$ is even and real; therefore, $e^{2\pi i ft}$ = $\cos(2\pi ft) + i \sin(2\pi ft)$ = $\cos(2\pi ft)$.
+We therefore can convolve the time-domain representation of the lowpass filter with the sampled signal, and we will obtain the filtered signal.
+
+The low pass filter has an impulse response defined as
 \begin{center}
     \begin{math}
-        h(t) = \displaystyle \int_{-\infty}^{\infty} H(f) \cos(2\pi ft) df
-    \end{math}  
+        h(t) = \displaystyle \frac{1}{T} \; \text{sinc} \left( \frac{t}{T} \right)
+    \end{math}
 \end{center}
-Evaluating this integral,
+where $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$.
+
+Recalling that our sampled signal is $x(nT)$, their convolution is
 \begin{center}
     \begin{math}
-        h(t) = \frac{1}{\pi t} \left[ \sin(2\pi f_h t) - \sin(2\pi f_l t) \right]
-    \end{math}  
-\end{center}
-This is equivalent to the difference of two sinc-like functions:
-\begin{center}
-    \begin{math}
-        h(t) = 2f_h \cdot \text{sinc}\left( 2 f_h t \right) - 2f_l \cdot \text{sinc}\left( 2 f_l t \right)
-    \end{math}  
-\end{center}
-In a lowpass filter, we pass all frequencies below a specified frequency $f_l$. 
-This is essentially like using a bandpass filter with boundaries $f_l = 0$ and $f_h = f_l$:
-\begin{center}
-    \begin{math}
-        h(t) = 2f_l \cdot \text{sinc}\left( 2 f_l t \right) - 2 \cdot 0 \cdot \text{sinc}\left( 2 \cdot 0 \cdot t \right) = 2f_l \cdot \text{sinc}\left( 2 f_l t \right)
-    \end{math}  
+        \displaystyle \int_{-\infty}^{\infty} \displaystyle \left [ \sum_{n=-\infty}^{\infty} x(nT) \delta (\tau - nT) \displaystyle \right ] \cdot h(t - \tau) d\tau
+    \end{math}
 \end{center}
 
-As previously explained, sampling a signal in the frequency domain corresponds to taking copies of the Fourier Transform of the signal, and shifting them to multiples of the sampling frequency.
-The baseband signal is going to lie around 0, as this is the first ``copy'' of the signal
+After some simplifications, we obtain that the recovered signal can be found using
+\begin{center}
+    \begin{math}
+        \displaystyle \sum_{n = -\infty}^{\infty} x(nT) \cdot \text{sinc} \left( \frac{t-nT}{T} \right)
+    \end{math}
+\end{center}
+which is the approach implemented in the \verb|reconstruction| function.
 
-%TODO: understand the link between the difference of two sinc like functions and the following sentence that we can just recover the signal like this:
-The signal $x(t)$ can therefore be recovered in the following way:
+However, because it is not possible to compute an infinite sum numerically, I must loop over a finite number of iterations. Mathematically, this looks like
 \begin{center}
     \begin{math}
-        x(t) = \displaystyle\sum_{n=-\infty}^{\infty} x(nT) \text{sinc}\left( \frac{t}{T} - n \right)
+        x(t) \approx \displaystyle\sum_{n}^{} x[n]\, \text{sinc}\left( F_st - n \right)
     \end{math}  
 \end{center}
-which is the approach implemented in the \verb|reconstruction| function. Because it is not possible to perform an infinite sum, I must loop over a finite number of iterations. Mathematically, this looks like
-\begin{center}
-    \begin{math}
-        x(t) = \displaystyle\sum_{n}^{} x[n]\, \text{sinc}\left( F_st - n \right)
-    \end{math}  
-\end{center}
-where $F_s = 1/T_s$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
+where $F_s = 1/T$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
 
 \section{Discussion}
 %results of code
