@@ -141,8 +141,8 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
     Fs = 1/(t_sampled[1] - t_sampled[0]) #calculates the sampling frequency
 
     x_s = np.zeros(len(t_s)) #initializing the reconstructed signal array
-    for n in range(0, len(t_sampled)):
-        x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter - but we are adding the frequencies together
+    for n in range(0, len(t_sampled)): #we loop through the sampled signal, this is a finite sum
+        x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter (in the time domain) that reconstructs the original signal from the sampled signal.
     
     if plot == True:
         plt.plot(t_s, x_s, label = "Reconstructed")
