@@ -260,26 +260,27 @@ where $F_s = 1/T$ and $x[n]$ is the value of the signal at the $n$-th sampling p
 
 %we see that we have not exactly the same reconstruction and original but this is bc of: Finite number of samples, Numerical approximations (e.g., np.sinc is not truly ideal), Edge effects due to time-domain boundaries --> CHECK WHAT THESE MEAN. could it also be related to quantization?
 
-We begin by observing a continuous time signal: a sine wave with frequency 5 Hertz (Figure 2). 
+We begin by observing a continuous time signal: $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$ (Figure 2). 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{images/sinewave_5hz.png}
-    \caption{Sine wave with frequency 5 Hz.}
+    \includegraphics[width=\linewidth]{images/conttimesignal_5_25.png}
+    \caption{Continuous time signal $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$.}
     \label{fig:enter-label}
 \end{figure}
+The highest frequency component of this signal is $B = 5$. 
 According to the Shannon-Nyquist theorem, if we sample the signal at a frequency greater than $2\cdot 5 = 10$ Hz, we can perfectly reconstruct the signal.
-Sampling the sine wave with sampling frequencies of 12 Hz (above the Shannon-Nyquist threshold) and 7 Hz (below the Shannon-Nyquist threshold) is seen in Figure 3.
+Sampling the wave with sampling frequencies of 12 Hz (above the Shannon-Nyquist threshold) and 7 Hz (below the Shannon-Nyquist threshold) is seen in Figure 3.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_12hz_3.png}
+        \includegraphics[width=\linewidth]{images/sampled_multiple_12.png}
         \\[0.5em] 
     \end{minipage}
     
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_7hz_3.png}
+        \includegraphics[width=\linewidth]{images/sampled_multiple_7hz.png}
     \end{minipage}
     
     \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz (top) and 7 Hz (bottom). 
