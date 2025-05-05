@@ -6,25 +6,41 @@ from scipy.fft import fft, fftfreq, fftshift
 frequency = 5
 sampling_frequency = 12
 t_end = 2
+signal_type = "multiple" #choose between "single" or "multiple"
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
 #time vector from 0 to 2
-def generate_signal(t_end, frequency, plot = False):
+def generate_signal(t_end, frequency, signal_type, plot = False):
     """
     Generates a sine wave from t = 0 to t = t_end with frequency defined by the frequency parameter.
     If plot = True, plots the generated sine wave.
+    If signal_type = "single", generates a sine wave with frequency "frequency".
+    If signal_type = "multiple", generates a sine wave with frequency "frequency" added to a sine wave with frequency "frequency/2".
     Returns the time array t and the x(t) sinusoid.
     """
     t = np.linspace(0, t_end, int(5000 * t_end))
-    x = np.sin(2 * np.pi * frequency * t)
-    if plot == True:
-        plt.figure(figsize=(12, 6))
-        plt.plot(t, x)
-        plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz", size = 25)
-        plt.xlabel("Time", size = 20)
-        plt.ylabel("Amplitude", size = 20)
-        plt.grid(True)
-        plt.show()
+    if signal_type == "single":
+        x = np.sin(2 * np.pi * frequency * t)
+        if plot == True:
+            plt.figure(figsize=(12, 6))
+            plt.plot(t, x)
+            plt.title(f"Continuous Time Signal - Sine Wave With Frequency {frequency} Hertz", size = 25)
+            plt.xlabel("Time", size = 20)
+            plt.ylabel("Amplitude", size = 20)
+            plt.grid(True)
+            plt.show()
+    elif signal_type == "multiple":
+        x = np.sin(2 * np.pi * frequency * t) + np.sin(np.pi * frequency * t) #a sine wave with freq "frequency" added to a sine wave with freq "frequency/2"
+        if plot == True:
+            plt.figure(figsize=(12, 6))
+            plt.plot(t, x)
+            plt.title(f"Continuous Time Signal - Sum of Sine Waves With Frequencies {frequency}, {frequency/2} Hertz", size = 25)
+            plt.xlabel("Time", size = 20)
+            plt.ylabel("Amplitude", size = 20)
+            plt.grid(True)
+            plt.show()
+    else:
+        raise ValueError("signal_type must be either 'single' or 'multiple'")
     return t, x
 
 #2: SAMPLING
@@ -158,7 +174,7 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
 
 if __name__ == "__main__":
 
-    t_continuous, x_continuous = generate_signal(t_end, frequency, plot = True)
+    t_continuous, x_continuous = generate_signal(t_end, frequency, signal_type = signal_type, plot = True)
     print(f"len(x_continuous) = {len(x_continuous)}")
 
     #we know that to avoid aliasing, we should have fs > 2 * B
