@@ -32,9 +32,9 @@ def generate_signal(t_end, frequency, signal_type, plot = False):
     elif signal_type == "multiple":
         x = np.sin(2 * np.pi * frequency * t) + np.sin(np.pi * frequency * t) #a sine wave with freq "frequency" added to a sine wave with freq "frequency/2"
         if plot == True:
-            plt.figure(figsize=(12, 6))
+            plt.figure(figsize=(15, 5))
             plt.plot(t, x)
-            plt.title(f"Continuous Time Signal - Sum of Sine Waves With Frequencies {frequency}, {frequency/2} Hertz", size = 25)
+            plt.title(f"Continuous Time Signal - Sum of Sine Waves With Frequencies {frequency/2}, {frequency} Hz", size = 25)
             plt.xlabel("Time", size = 20)
             plt.ylabel("Amplitude", size = 20)
             plt.grid(True)
