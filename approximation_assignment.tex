@@ -181,7 +181,9 @@ Because $f_s$ is sufficiently large, the shifted copies will not land inside $\l
 
 %maybe like one sentence of what the sampling process consists of
 
-To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a sine wave (a continuous-time signal) of desired frequency.
+To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a continuous time signal.
+If the parameter \verb|signal_type| is set to \verb|"single"|, a sine wave of desired frequency is created.
+If this parameteris set to \verb|"multiple"|, a sine wave of desired frequency is added to a sine wave with half of the desired frequency. 
 %\begin{lstlisting}[language = Python]
 %\end{lstlisting}
 %insert code block here

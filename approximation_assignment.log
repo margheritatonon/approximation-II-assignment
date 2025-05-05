@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  4 MAY 2025 13:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.22)  5 MAY 2025 22:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -351,7 +351,7 @@ Package pdftex.def Info: images/leftright_ogsampled.png  used on input line 77.
 <images/sinewave_5hz.png, id=57, 867.24pt x 433.62pt>
 File: images/sinewave_5hz.png Graphic file (type png)
 <use images/sinewave_5hz.png>
-Package pdftex.def Info: images/sinewave_5hz.png  used on input line 263.
+Package pdftex.def Info: images/sinewave_5hz.png  used on input line 265.
 (pdftex.def)             Requested size: 424.06033pt x 212.03235pt.
 
 
@@ -359,17 +359,17 @@ Package pdftex.def Info: images/sinewave_5hz.png  used on input line 263.
 <images/sampled_12hz_3.png, id=62, 1011.78pt x 361.35pt>
 File: images/sampled_12hz_3.png Graphic file (type png)
 <use images/sampled_12hz_3.png>
-Package pdftex.def Info: images/sampled_12hz_3.png  used on input line 274.
+Package pdftex.def Info: images/sampled_12hz_3.png  used on input line 276.
 (pdftex.def)             Requested size: 339.24956pt x 121.15913pt.
 <images/sampled_7hz_3.png, id=63, 1011.78pt x 361.35pt>
 File: images/sampled_7hz_3.png Graphic file (type png)
 <use images/sampled_7hz_3.png>
-Package pdftex.def Info: images/sampled_7hz_3.png  used on input line 280.
+Package pdftex.def Info: images/sampled_7hz_3.png  used on input line 282.
 (pdftex.def)             Requested size: 339.24956pt x 121.15913pt.
 <images/freqdomain_5hz.png, id=64, 1040.688pt x 361.35pt>
 File: images/freqdomain_5hz.png Graphic file (type png)
 <use images/freqdomain_5hz.png>
-Package pdftex.def Info: images/freqdomain_5hz.png  used on input line 324.
+Package pdftex.def Info: images/freqdomain_5hz.png  used on input line 326.
 (pdftex.def)             Requested size: 424.06033pt x 147.24469pt.
 
 
@@ -377,22 +377,22 @@ Package pdftex.def Info: images/freqdomain_5hz.png  used on input line 324.
 <images/freqdom_20hz.png, id=74, 1040.688pt x 397.485pt>
 File: images/freqdom_20hz.png Graphic file (type png)
 <use images/freqdom_20hz.png>
-Package pdftex.def Info: images/freqdom_20hz.png  used on input line 336.
+Package pdftex.def Info: images/freqdom_20hz.png  used on input line 338.
 (pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
 <images/freqdom_12hz.png, id=75, 1040.688pt x 397.485pt>
 File: images/freqdom_12hz.png Graphic file (type png)
 <use images/freqdom_12hz.png>
-Package pdftex.def Info: images/freqdom_12hz.png  used on input line 337.
+Package pdftex.def Info: images/freqdom_12hz.png  used on input line 339.
 (pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
 <images/freqdom_7hz.png, id=76, 1040.688pt x 397.485pt>
 File: images/freqdom_7hz.png Graphic file (type png)
 <use images/freqdom_7hz.png>
-Package pdftex.def Info: images/freqdom_7hz.png  used on input line 343.
+Package pdftex.def Info: images/freqdom_7hz.png  used on input line 345.
 (pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
 <images/freqdom_3hz.png, id=77, 1040.688pt x 397.485pt>
 File: images/freqdom_3hz.png Graphic file (type png)
 <use images/freqdom_3hz.png>
-Package pdftex.def Info: images/freqdom_3hz.png  used on input line 344.
+Package pdftex.def Info: images/freqdom_3hz.png  used on input line 346.
 (pdftex.def)             Requested size: 212.03017pt x 80.98154pt.
 
 
@@ -402,7 +402,7 @@ Package pdftex.def Info: images/freqdom_3hz.png  used on input line 344.
 pdfTeX warning (ext4): destination with the same identifier (name{cite.citekey}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{document}
+l.379 \end{document}
                     ] (./approximation_assignment.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -424,7 +424,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  75i,9n,79p,422b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/margheritatonon/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on approximation_assignment.pdf (7 pages, 890252 bytes).
+Output written on approximation_assignment.pdf (7 pages, 890594 bytes).
 PDF statistics:
  157 PDF objects out of 1000 (max. 8388607)
  104 compressed objects within 2 object streams
