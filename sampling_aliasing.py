@@ -132,6 +132,8 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
 #4: RECONSTRUCTION
 #We now reconstruct the original signal from the sampled signal.
 #the signal can be recovered applying an (ideal band pass) filter --> in time domain this looks like the sinc function
+#we do this in the time domain in order to avoid circular convolution
+#if we had done a multiplication in the frequency domain instead, we would have had to zero pad the signal to avoid circular convolution
 def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s = None):
     """
     Returns the reconstructed signal from the sampled signal x_sampled, using t_sampled (the discrete timesteps of the sampled signal) and t_s (the time axis that we want the signal to be reconstructed on).
