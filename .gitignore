@@ -1,2 +1,8 @@
 *.pyc
 __pycache__
+approximation_assignment.aux
+approximation_assignment.fdb_latexmk
+approximation_assignment.fls
+approximation_assignment.log
+approximation_assignment.out
+approximation_assignment.synctex.gz
