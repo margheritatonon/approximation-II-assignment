@@ -165,8 +165,8 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
     
     if plot == True:
         plt.figure(figsize=(12, 6))
-        plt.plot(t_s, x_continuous, label = "Original", color = "Red", alpha = 0.7, lw = 2)
-        plt.plot(t_s, x_s, label = "Reconstructed", lw = 2, ls = "--", color = "black")
+        plt.plot(t_s, x_continuous, label = "Original", alpha = 0.9, lw = 2)
+        plt.plot(t_s, x_s, label = "Reconstructed", lw = 2, ls = "--", color = "red")
         plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz)", size = 30)
         plt.xlabel("Time", size = 20)
         plt.ylabel("Amplitude", size = 20)
