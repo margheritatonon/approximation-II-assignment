@@ -104,7 +104,7 @@ def frequency_domain_plot(x_continuous, t_continuous):
     freqs = np.fft.fftfreq(N, d=dt)
 
     plt.figure(figsize=(15, 5))
-    plt.plot(freqs, X_magnitude)
+    plt.plot(freqs, X_magnitude, color = "black")
     plt.title(f"Frequency Domain Representation of Time Continuous Signal", fontsize=25)
     plt.xlabel("Frequency (Hz)", fontsize=18)
     plt.ylabel("Magnitude", fontsize=18)
