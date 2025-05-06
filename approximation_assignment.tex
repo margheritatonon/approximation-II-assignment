@@ -202,7 +202,7 @@ and performs the Fast Fourier Transform of the sampled amplitudes using the \ver
 The Fourier Transform integrates a signal over all time (from $-\infty$ to $+\infty$) and requires a signal to be continuous. 
 However, in many practical situations, such as our current scenario, we work with finite and discrete signals. 
 The Discrete Fourier Transform allows us to numerically compute the Fourier Transform for a finite time interval, 
-and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform. 
+and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform in a more computationally efficient way. 
 Therefore, in the \verb|sampled_fourier_transform| function, \verb|yf| is a complex array representing the sampled signal \verb|x_sampled| in the frequency domain, 
 and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to. %i think that maybe it has something to do with ck of the DFT? not sure tho
 If \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
@@ -262,7 +262,7 @@ where $F_s = 1/T$ and $x[n]$ is the value of the signal at the $n$-th sampling p
 
 We begin by observing a continuous time signal: $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$ (Figure 2). 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{images/conttimesignal_5_25.png}
+    \includegraphics[width=\linewidth]{images/ogtimedom.png}
     \caption{Continuous time signal $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$.}
     \label{fig:enter-label}
 \end{figure}
@@ -274,13 +274,13 @@ Sampling the wave with sampling frequencies of 12 Hz (above the Shannon-Nyquist 
     \centering
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_multiple_12.png}
+        \includegraphics[width=\linewidth]{images/new_sampled_12hz.png}
         \\[0.5em] 
     \end{minipage}
     
     \begin{minipage}{0.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/sampled_multiple_7hz.png}
+        \includegraphics[width=\linewidth]{images/new_sampled_7hz.png}
     \end{minipage}
     
     \caption{Visualization of the sampling a continuous time signal with a sampling frequency 12 Hz (top) and 7 Hz (bottom). 
@@ -322,39 +322,54 @@ As expected, the time domain representation of the signal sampled at 12 Hz has m
 %this is the expected behaviour as a sampling frequency of 12 Hz 
 %this is the expected behaviour as 12 Hz being a higher sampling frequency than 7 Hz means that the signal is sampled more times across a given time interval (here being 2 seconds). 
 
-In the frequency domain, the original 5 Hz sine wave looks like two spikes at 5 and -5 Hz (Figure 4).
+In the frequency domain, the original continuous time signal looks like four spikes at $5$, $-5$, $2.5$, and $-2.5$ Hz (Figure 4).
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{images/freqdomain_5hz.png}
-    \caption{Frequency domain representation of sine wave with frequency 5 Hz.}
+    \includegraphics[width=\linewidth]{images/freqdom_multiple.png}
+    \caption{Frequency domain representation of the continuous time signal.}
     \label{fig:enter-label}
 \end{figure}
 
-Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
-The top row is all frequencies above the Shannon-Nyquist threshold, whereas the bottom row is all sampling frequencies below the Shannon-Nyquist threshold.
-%TODO: need to reformat this so its 2x2
+Figure 5 shows the frequency domain representation of the signal sampled at 12 Hz and 7 Hz.
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.5\textwidth}
+    \begin{minipage}{\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/freqdom_20hz.png}
-        \includegraphics[width=\linewidth]{images/freqdom_12hz.png}
+        \includegraphics[width=\linewidth]{images/new_freqdom_12hz.png}
+        \includegraphics[width=\linewidth]{images/new_freqdom_7hz.png}
         \\[0.5em] 
     \end{minipage}
-    
-    \begin{minipage}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{images/freqdom_7hz.png}
-        \includegraphics[width=\linewidth]{images/freqdom_3hz.png}
-    \end{minipage}
-    
-    \caption{Frequency domain representation of sampled signal at different sampling rates.}
+    \caption{Frequency domain representation of sampled signal at 12 Hz (top) and 7 Hz (bottom). The red dotted line represents the low pass filter cutoff frequencies $\frac{f_s}{2}$.}
 \end{figure}
+When the sampling frequency is above the Shannon-Nyquist threshold, we can see that both of the original frequency components of the original signal (2.5 and 5 Hz) are contained within the filtering bound, which in this case is at $\frac{12}{2}=6$ Hz. 
 
-We can observe that the higher the sampling frequency, the 
-When the sampling frequency is above the Shannon-Nyquist threshold, the frequencies closest to 0 are -5 and 5 Hz, which is the true frequency of the original signal (). %insert label of plot here, e.g. top right). 
-However, when the sampling frequency is below this threshold, the frequencies closest to 0 are no longer -5 and 5 Hz. 
-For example, in the plot of sampling frequency 7 Hz (), we see that the frequencies closest to 0 are 2 and -2, and in the plot of sampling frequency 3 Hz (), we see they are 1 and -1 Hz. 
-This becomes an issue when a filter is applied to recover the original signal. 
+However, when the sampling frequency is below the Shannon-Nyquist threshold, 
+
+%Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
+%The top row is all frequencies above the Shannon-Nyquist threshold, whereas the bottom row is all sampling frequencies below the Shannon-Nyquist threshold.
+%TODO: need to reformat this so its 2x2
+%\begin{figure}[H]
+%    \centering
+%    \begin{minipage}{0.5\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/freqdom_20hz.png}
+%        \includegraphics[width=\linewidth]{images/freqdom_12hz_multiple.png}
+%        \\[0.5em] 
+%    \end{minipage}
+    
+%    \begin{minipage}{0.5\textwidth}
+%        \centering
+%        \includegraphics[width=\linewidth]{images/freqdom_7hz.png}
+%        \includegraphics[width=\linewidth]{images/freqdom_3hz.png}
+%    \end{minipage}
+    
+%    \caption{Frequency domain representation of sampled signal at different sampling rates.}
+%\end{figure}
+
+%We can observe that the higher the sampling frequency, the 
+%When the sampling frequency is above the Shannon-Nyquist threshold, the frequencies closest to 0 are -5 and 5 Hz, which is the true frequency of the original signal (). %insert label of plot here, e.g. top right). 
+%However, when the sampling frequency is below this threshold, the frequencies closest to 0 are no longer -5 and 5 Hz. 
+%For example, in the plot of sampling frequency 7 Hz (), we see that the frequencies closest to 0 are 2 and -2, and in the plot of sampling frequency 3 Hz (), we see they are 1 and -1 Hz. 
+%This becomes an issue when a filter is applied to recover the original signal. 
 %give explanation 
 
 %maybe it could be useful to somewhere have like when u use 7hz u could actually construct multiple sine waves that pass through the points. could u code this?
