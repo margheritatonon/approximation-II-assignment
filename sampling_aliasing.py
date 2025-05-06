@@ -138,8 +138,8 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
         tick_start = np.ceil(x_min / 2) * 2 
         tick_end = np.floor(x_max / 2) * 2 
         plt.xticks(np.arange(tick_start, tick_end + 1, 2), size = 10) #size parameter to control for font size
-        plt.axvline(x=sampling_freq / 2, color='limegreen', linestyle='--', linewidth=2) #green vertical line at fs/2 and -fs/2
-        plt.axvline(x=-sampling_freq / 2, color='limegreen', linestyle='--', linewidth=2)
+        plt.axvline(x=sampling_freq / 2, color='#E69F00', linestyle='--', linewidth=2) #green vertical line at fs/2 and -fs/2
+        plt.axvline(x=-sampling_freq / 2, color='#E69F00', linestyle='--', linewidth=2)
 
         plt.show()
 
