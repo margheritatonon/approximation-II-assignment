@@ -126,11 +126,12 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
         
         #plotting
         plt.figure(figsize=(15, 5.5))
-        plt.plot(xf_tiled, magnitude_tiled)
+        plt.plot(xf_tiled, magnitude_tiled, color = "black")
         plt.title(f"Frequency Domain Representation of {sampling_freq}Hz Sampled Signal", size = 30)
         plt.xlabel("Frequency (Hertz)", size = 20)
-        plt.grid(True)
+        plt.grid(True, which = "both", linestyle = "--", linewidth = 0.5)
         plt.axvline(x=0, color='gray', linestyle='--', linewidth=1)
+        plt.ylabel("Magnitude", size = 20)
        
         #for axis ticks of multiples of 2
         x_min, x_max = plt.xlim()
