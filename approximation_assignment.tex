@@ -324,25 +324,50 @@ As expected, the time domain representation of the signal sampled at 12 Hz has m
 
 In the frequency domain, the original continuous time signal looks like four spikes at $5$, $-5$, $2.5$, and $-2.5$ Hz (Figure 4).
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{images/freqdom_multiple.png}
+    \includegraphics[width=\linewidth]{images/freqdom_timecont_black.png}
     \caption{Frequency domain representation of the continuous time signal.}
     \label{fig:enter-label}
 \end{figure}
 
-Figure 5 shows the frequency domain representation of the signal sampled at 12 Hz and 7 Hz.
+Figure 5 shows the frequency domain representation of the signal sampled at 12 Hz together with the reconstructed signal. 
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/new_freqdom_12hz.png}
-        \includegraphics[width=\linewidth]{images/new_freqdom_7hz.png}
+        \includegraphics[width=\linewidth]{images/orange_freqdom_12hz.png}
+        \includegraphics[width=\linewidth]{images/ogcolors_reconstructed_12hz.png}
         \\[0.5em] 
     \end{minipage}
-    \caption{Frequency domain representation of sampled signal at 12 Hz (top) and 7 Hz (bottom). The red dotted line represents the low pass filter cutoff frequencies $\frac{f_s}{2}$.}
+    \caption{Frequency domain representation of sampled signal at 12 Hz (top), and the reconstructed signal (bottom). 
+    The orange dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
 \end{figure}
-When the sampling frequency is above the Shannon-Nyquist threshold, we can see that both of the original frequency components of the original signal (2.5 and 5 Hz) are contained within the filtering bound, which in this case is at $\frac{12}{2}=6$ Hz. 
+Here, the sampling frequency is above the Shannon-Nyquist threshold, and we can see that both of the frequency components of the original signal (2.5 and 5 Hz) are contained within the filtering bound -- which in this case is at $\frac{12}{2}=6$ Hz. 
+Because sampling replicates the original spectrum $X(f)$ at every integer multiple of $f_s$, we do not see any frequencies fold when $f_s > 2B$ as the integer multiples are larger than the bandwidth of the original signal.
+Therefore, when the low pass filter is applied, the signal's original frequencies will be recovered and the signal will be perfectly reconstructed, as can be seen in the bottom plot of Figure 5.
+The slight inconsistencies are due to numerical errors in truncating infinite sums.
 
-However, when the sampling frequency is below the Shannon-Nyquist threshold, 
+However, when the sampling frequency is below the Shannon-Nyquist threshold, we can clearly see aliasing occur.
+Figure 6 shows the frequency domain representation of the signal sampled at 7 Hz together with the reconstructed signal.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/orange_freqdom_7hz.png}
+        \includegraphics[width=\linewidth]{images/ogcolors_reconstructed_7hz.png}
+        \\[0.5em] 
+    \end{minipage}
+    \caption{Frequency domain representation of sampled signal at 7 Hz (top), and the reconstructed signal (bottom). 
+    The orange dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
+\end{figure}
+
+In the frequency domain plot (top), we can see that the low pass filter bounds are $\pm 3$ Hz.
+This means the 5 Hz frequency component from the original signal lies outside the filter range and is therefore not captured.
+Moreover, we also observe folding happening. The $5$ Hz frequency is folded back on $f_s = 7$ Hz, landing on $-2$ Hz. 
+Similarly, the $-5$ Hz frequency also folds back and lands on $-5+7=2$ Hz. This is why we see the $\pm 2$ Hz frequencies within the filtering window.
+When the low pass filter with cutoff frequency $\frac{f_S}{2} = 3.5$ Hz is applied, it captures the 2 and 2.5 Hz frequencies, reconstructing an incorrect signal, as seen in the bottom plot of Figure 6.
+
 
 %Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
 %The top row is all frequencies above the Shannon-Nyquist threshold, whereas the bottom row is all sampling frequencies below the Shannon-Nyquist threshold.
