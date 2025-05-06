@@ -105,7 +105,7 @@ def frequency_domain_plot(x_continuous, t_continuous):
 
     plt.figure(figsize=(15, 5))
     plt.plot(freqs, X_magnitude)
-    plt.title(f"Frequency Domain of 5Hz Sine Wave", fontsize=25)
+    plt.title(f"Frequency Domain Representation of Time Continuous Signal", fontsize=25)
     plt.xlabel("Frequency (Hz)", fontsize=18)
     plt.ylabel("Magnitude", fontsize=18)
     plt.grid(True)
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     sampling_frequency = 12
 
     #script import functions
-    t_continuous, x_continuous = generate_signal(2, frequency, plot = False)
+    t_continuous, x_continuous = generate_signal(2, frequency, signal_type="multiple", plot = False)
     t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency)
     yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2)
 
