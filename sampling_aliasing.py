@@ -4,7 +4,7 @@ from scipy.fft import fft, fftfreq, fftshift
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 7
+sampling_frequency = 12
 t_end = 4
 signal_type = "multiple" #choose between "single" or "multiple"
 
@@ -164,10 +164,12 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
         x_s = x_s + x_sampled[n] * np.sinc(Fs * t_s - n) #this is the filter (in the time domain) that reconstructs the original signal from the sampled signal.
     
     if plot == True:
+        plt.figure(figsize=(12, 6))
         plt.plot(t_s, x_s, label = "Reconstructed")
         plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
-        plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz) versus Original Signal (frequency {frequency} Hz)")
-        plt.xlabel("Time")
+        plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz)", size = 30)
+        plt.xlabel("Time", size = 20)
+        plt.ylabel("Amplitude", size = 20)
         plt.legend(loc="upper left")
         plt.show()
 
