@@ -4,8 +4,8 @@ from scipy.fft import fft, fftfreq, fftshift
 
 #defining all parameters:
 frequency = 5
-sampling_frequency = 12
-t_end = 2
+sampling_frequency = 7
+t_end = 4
 signal_type = "multiple" #choose between "single" or "multiple"
 
 #1: CREATING THE CONTINUOUS TIME SIGNAL
