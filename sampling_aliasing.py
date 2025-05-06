@@ -34,7 +34,7 @@ def generate_signal(t_end, frequency, signal_type, plot = False):
         if plot == True:
             plt.figure(figsize=(15, 5))
             plt.plot(t, x)
-            plt.title(f"Continuous Time Signal - Sum of Sine Waves With Frequencies {frequency/2}, {frequency} Hz", size = 25)
+            plt.title(f"Continuous Time Signal - Sum of Sine Waves With Frequencies {frequency/2} and {frequency} Hz", size = 25)
             plt.xlabel("Time", size = 20)
             plt.ylabel("Amplitude", size = 20)
             plt.grid(True)
