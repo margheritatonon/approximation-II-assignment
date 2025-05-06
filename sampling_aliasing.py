@@ -165,8 +165,8 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
     
     if plot == True:
         plt.figure(figsize=(12, 6))
-        plt.plot(t_s, x_s, label = "Reconstructed")
-        plt.plot(t_s, x_continuous, label = "Original", color = "Red", ls="--", alpha = 0.7)
+        plt.plot(t_s, x_continuous, label = "Original", color = "Red", alpha = 0.7, lw = 2)
+        plt.plot(t_s, x_s, label = "Reconstructed", lw = 2, ls = "--", color = "black")
         plt.title(f"Reconstructed Signal (sampling frequency {sampling_frequency} Hz)", size = 30)
         plt.xlabel("Time", size = 20)
         plt.ylabel("Amplitude", size = 20)
@@ -177,16 +177,12 @@ def reconstruction(x_sampled, t_sampled, plot = False, x_continuous = None, t_s 
 
 if __name__ == "__main__":
 
-    t_continuous, x_continuous = generate_signal(t_end, frequency, signal_type = signal_type, plot = True)
-    print(f"len(x_continuous) = {len(x_continuous)}")
+    t_continuous, x_continuous = generate_signal(t_end, frequency, signal_type = signal_type, plot = False)
+    print(f"len(x_continuous) = {len(x_continuous)}") 
 
-    #we know that to avoid aliasing, we should have fs > 2 * B
-    nyquist_shannon_threshold = 2 * frequency 
-    print(f"fs >= nyquist_shannon_threshold: {sampling_frequency >= nyquist_shannon_threshold}") #just for checking
+    t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = False, plot_two = False, plot_three = False)
 
-    t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency, plot_one = True, plot_two = True, plot_three = True)
-
-    yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = True)
+    yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2, plot = False)
 
     x_s = reconstruction(x_sampled, t_sampled, plot = True, x_continuous=x_continuous, t_s=t_continuous)
 
