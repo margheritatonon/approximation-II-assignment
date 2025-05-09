@@ -19,12 +19,12 @@
 
 \section{Introduction}
 In signal processing, computers analyze and process discrete time signals. 
-However, most signals of interest are continuous time signals, as these are the signals most commonly found in nature -- e.g. sound waves.
+However, most signals of interest are continuous, as these are the signals most commonly found in nature -- e.g. sound waves.
 We therefore use sampling, allowing us to convert a continuous-time signal into a discrete signal that a computer is able to process.
-Nonetheless, one of the factors determining the accuracy in the information content of sampled signals is the sampling rate. %not sure if i should mention quantization, because i dont mention it at all ever.
+Nonetheless, one of the factors determining the accuracy of the information content of a sampled signal is the sampling rate. %not sure if i should mention quantization, because i dont mention it at all ever.
 Given that the Shannon-Nyquist theorem, a condition relating to the sampling rate, is met, a signal can be perfectly recovered from its sampled signal. 
-However, if this condition is not met, a signal can no longer be perfectly recovered due to a phenomenon named aliasing [1].
-Here, we will explore the process of recovering a sampled signal, looking at different sampling rates that meet and do not meet the conditions for perfect signal recovery.
+However, if this condition is not met, a signal can no longer be perfectly recovered due to a phenomenon called aliasing [1].
+Here, we will explore the process of recovering a sampled signal, looking at sampling rates that meet and do not meet the conditions for perfect signal recovery.
 
 %introduction sentence, context, motivation
 
@@ -52,7 +52,8 @@ Sampling can also be represented as
 where $x_s(t)$ is the sampled points, and $\delta$ is the Dirac Delta distribution, taking value 1 if $t=nT_s$, and 0 otherwise.
 Therefore, it is clear that when $t=nT_s$, $x_s(t) = x(t)$; otherwise, $x_s(t) = 0$. 
 
-In practice, sampling allows us to discretize a continuous input, facilitating the handling of signals. After sampling is done, it is natural that the signal must be reconstructed in order to recover the original (time continuous) signal.
+In practice, sampling allows us to discretize a continuous input, facilitating the handling of signals. 
+After sampling is done, it is natural that the signal must be reconstructed in order to recover the original signal.
 However, recovery is not always perfect -- the Shannon-Nyquist condition must be met.
 %something along the lines of: the key issue is what must the sampling frequency be in order for a signal to be perfectly reconstructed and recovered?
 
@@ -62,9 +63,9 @@ The Shannon-Nyquist theorem states that a signal can be perfectly reconstructed 
         f_s > 2B
     \end{math}  
 \end{center}
-For example, if we consider a sine wave with frequency 2 Hertz (Hz), $\sin(2\pi \cdot 2 \cdot t)$, once sampled it can be perfectly reconstructed if the sampling frequency is greater than 4 Hz.
+For example, if we consider a sine wave with frequency 2 Hertz (Hz), once sampled it can be perfectly reconstructed if the sampling frequency is greater than 4 Hz.
+%$\sin(2\pi \cdot 2 \cdot t)$
 
-%do i explain quantization here?
 
 In the time domain, a sampled signal looks like discrete spikes (Figure 1). 
 %\begin{figure} %TODO: not sure if i should change this plot so that it has the og signal on the left and the sampled signal on the right, but maybe make it above shannon hyquist so that ppl actually get a sense of what happens
@@ -72,9 +73,9 @@ In the time domain, a sampled signal looks like discrete spikes (Figure 1).
 %    \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 5 Hertz}
 %    \label{fig:grid}
 %\end{figure}
-
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{images/leftright_ogsampled.png}
+    \centering
+    \includegraphics[width=0.82\linewidth]{images/firstplot_biggertitles.png} %leftright_ogsampled
     \caption{Representation of sampling of $\sin(4\pi t)$ in the time domain, sampled at a frequency of 10 Hz.}
     \label{fig:enter-label}
 \end{figure}
@@ -137,15 +138,15 @@ We can therefore observe how the representation of a sampled signal in the frequ
 
 When recovering the original signal, we assume that the Shannon-Nyquist condition is met. 
 Because $f_s > 2B$, the original signal has to be contained within the range of frequencies $\frac{-f_s}{2}$ and $\frac{f_s}{2}$, as $\frac{-f_s}{2} < -B$ and  $\frac{f_s}{2} > B$. 
-Because the frequency domain representation of a signal has the frequency of the signal as well as the negative frequency of the signal, we only need to consider the positive frequencies: $0$ to $\frac{f_s}{2}$ Hz. %todo: rephrase
-We therefore apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2} = \frac{1}{2T}$.
-In the frequency domain, we would multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the signal.
+%Because the frequency domain representation of a signal has the frequency of the signal as well as the negative frequency of the signal, we only need to consider the positive frequencies: $0$ to $\frac{f_s}{2}$ Hz. %todo: rephrase
+We therefore apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2} = \frac{1}{2T_s}$.
+In the frequency domain, we would multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the filtered signal.
 
 Nonetheless, the frequency domain representation of the sampled signal and the low pass filter highlight the need for the Shannon-Nyquist theorem.
 When filtering a sampled signal, we effectively only see and select the frequencies between $\frac{-f_s}{2}$ to $\frac{f_s}{2}$.
 If $f_s = 2B$, this range becomes $[-B, B]$, and therefore all of the frequency components of the original signal are included.
 However, when $f_s < 2B$, the filter will select frequencies on a range $[-a, a]$, where $a < B$. Clearly, $B$ is not included within this range and we end up missing part of the original spectrum.
-We recall that sampling in the frequency domain replicates the original spectrum $X(f)$ at every integer multiple of $f_s$.
+Moreover, we recall that sampling in the frequency domain replicates the original spectrum $X(f)$ at every integer multiple of $f_s$.
 If $f_s$ is too small, some copied frequencies will shift into in the interval $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ -- this is known as folding.
 When filtering, these folded frequencies will be wrongly interpreted as the original signal's frequency, and therefore the original signal will not be reconstructed correctly.
 The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing.
@@ -174,7 +175,7 @@ Because $f_s$ is sufficiently large, the shifted copies will not land inside $\l
 %the problem of reconstruction and the need for sufficiently high sampling frequencies
 
 \section{Implementation}
-%TODO: insert code snippets and change the function names to actual code block writing
+%TODO: insert code snippets
 %explanation of code
 %the theory behind the sinc function bc thats what we implement when we have been talking about ideal band pass filter the entire time
 %here dont put all of the different frequencies because we do that in the discussion
@@ -187,33 +188,34 @@ If this parameteris set to \verb|"multiple"|, a sine wave of desired frequency i
 %\begin{lstlisting}[language = Python]
 %\end{lstlisting}
 %insert code block here
-Here, I simply create a time array with $5000t_e$ elements, where $t_e$ is the duration in seconds of the signal, 
-and then apply the sine function with the given frequency to the $5000 t_e$ time values. 
+Although these signals represent continuous time signals, they must be discretized in order to be dealt with in the computer;
+in this funcion, I create a time array with $5000t_e$ elements, where $t_e$ is the duration in seconds of the signal, 
+and then apply the sine function(s) with the given frequency to the $5000 t_e$ time values. 
 Users can set the \verb|plot| parameter to \verb|True| if they wish a plot of the original continuous-time signal to be displayed.
 
 Next, I define the \verb|sample_signal| function, which samples the continuous signal at a specified sampling frequency.
 %code block of sample_signal
-In this code block, I create a new time array \verb|t_sampled| for the sampled signal using the sampling period, representing the new set of discrete time points. 
+In this code block, I create a new time array \verb|t_sampled|. 
+This array represents the discrete time points of the sampled signal, starting at 0 and ending at $t_e$, with jumps of the sampling period $T_s$.
+%for the sampled signal using the sampling period, representing the new set of discrete time points. 
 Next, I use \verb|np.interp| to perform the sampling of the original signal \verb|x| at the time points in the \verb|t_sampled| array.
 Users can set \verb|plot_one| to \verb|True| if they wish to visualize the original signal together with the sampled points, \verb|plot_two| to \verb|True| if they wish to just visualize the sampled points, and \verb|plot_three| to \verb|True| to visualize both plots side by side.
 
-Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
+Thirdly, I create the \verb|sampled_fourier_transform| function, which takes as inputs the array of sampled amplitudes, the sampling frequency, and the number of times to repeat the spectrum ($k$), 
 and performs the Fast Fourier Transform of the sampled amplitudes using the \verb|scipy| module [2].
 The Fourier Transform integrates a signal over all time (from $-\infty$ to $+\infty$) and requires a signal to be continuous. 
 However, in many practical situations, such as our current scenario, we work with finite and discrete signals. 
 The Discrete Fourier Transform allows us to numerically compute the Fourier Transform for a finite time interval, 
 and the Fast Fourier Transform is a way of computing the Discrete Fourier Transform in a more computationally efficient way. 
-Therefore, in the \verb|sampled_fourier_transform| function, \verb|yf| is a complex array representing the sampled signal \verb|x_sampled| in the frequency domain, 
-and \verb|xf| is the frequency values, in Hertz, that each element in \verb|yf| corresponds to. %i think that maybe it has something to do with ck of the DFT? not sure tho
-If \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
+When taking the FFT, we obtain \verb|yf|, a complex array representing the magnitude and phase of a frequency component, 
+and \verb|xf|, the frequency values, in Hertz, that each element in \verb|yf| corresponds to. 
+If the \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of the sampled signal in the frequency domain is shown.
 %code block
 
 Finally, I define the \verb|reconstruction| function, which reconstructs the original signal from the sampled signal.
-This function takes as inputs the array of the amplitudes of the sampled signal \verb|x_sampled| and the time array of the sampled signal \verb|t_sampled|.
+This function takes as inputs the array of the amplitudes of the sampled signal, \verb|x_sampled|, and the time array of the sampled signal, \verb|t_sampled|.
 If users wish to plot the reconstructed signal together with the original signal, they must set the \verb|plot| parameter to \verb|True| and provide the original signal \verb|x_continuous| as well as the continuous time array \verb|t_s|.
-%code block here
-
-In the code, I reconstruct the signal in the time domain using the sinc function.
+In this function, I reconstruct the signal in the time domain using the sinc function.
 Previously, we mentioned that we must apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2}$ to recover the signal.
 The convolution theorem states that if $x(t)$ and $h(t)$ are two absolutely integrable functions in $\mathcal{L}^1$, and if their Fourier transforms $X(f) = \mathcal{F}(x(t))$ and $H(f) = \mathcal{F}(h(t))$ exist and are well defined,
 \begin{center}
@@ -226,22 +228,22 @@ We therefore can convolve the time-domain representation of the lowpass filter w
 The low pass filter has an impulse response defined as
 \begin{center}
     \begin{math}
-        h(t) = \displaystyle \frac{1}{T} \; \text{sinc} \left( \frac{t}{T} \right)
+        h(t) = \displaystyle \frac{1}{T_s} \; \text{sinc} \left( \frac{t}{T_s} \right)
     \end{math}
 \end{center}
 where $\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$.
 
-Recalling that our sampled signal is $x(nT)$, their convolution is
+Recalling that our sampled signal is $x(nT_s)$, their convolution is
 \begin{center}
     \begin{math}
-        \displaystyle \int_{-\infty}^{\infty} \displaystyle \left [ \sum_{n=-\infty}^{\infty} x(nT) \delta (\tau - nT) \displaystyle \right ] \cdot h(t - \tau) d\tau
+        \displaystyle \int_{-\infty}^{\infty} \displaystyle \left [ \sum_{n=-\infty}^{\infty} x(nT_s) \delta (\tau - nT_s) \displaystyle \right ] \cdot h(t - \tau) d\tau
     \end{math}
 \end{center}
 
 After some simplifications, we obtain that the recovered signal can be found using
 \begin{center}
     \begin{math}
-        \displaystyle \sum_{n = -\infty}^{\infty} x(nT) \cdot \text{sinc} \left( \frac{t-nT}{T} \right)
+        \displaystyle \sum_{n = -\infty}^{\infty} x(nT_s) \cdot \text{sinc} \left( \frac{t-nT_s}{T_s} \right)
     \end{math}
 \end{center}
 which is the approach implemented in the \verb|reconstruction| function.
@@ -252,7 +254,7 @@ However, because it is not possible to compute an infinite sum numerically, I mu
         x(t) \approx \displaystyle\sum_{n}^{} x[n]\, \text{sinc}\left( F_st - n \right)
     \end{math}  
 \end{center}
-where $F_s = 1/T$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
+where $F_s = \frac{1}{T_s}$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
 
 \section{Discussion}
 %results of code
@@ -260,8 +262,9 @@ where $F_s = 1/T$ and $x[n]$ is the value of the signal at the $n$-th sampling p
 
 %we see that we have not exactly the same reconstruction and original but this is bc of: Finite number of samples, Numerical approximations (e.g., np.sinc is not truly ideal), Edge effects due to time-domain boundaries --> CHECK WHAT THESE MEAN. could it also be related to quantization?
 
-We begin by observing a continuous time signal: $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$ (Figure 2). 
+We begin by observing a continuous time signal: $x(t) = \sin(10\pi t) + \sin(5\pi t)$ (Figure 2). 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\linewidth]{images/ogtimedom.png}
     \caption{Continuous time signal $x(t) = \sin(2\pi\cdot5t) + \sin(\pi\cdot5t)$.}
     \label{fig:enter-label}
@@ -335,14 +338,14 @@ Figure 5 shows the frequency domain representation of the signal sampled at 12 H
     \centering
     \begin{minipage}{\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/orange_freqdom_12hz.png}
+        \includegraphics[width=\linewidth]{images/pink_freqdom_12hz.png}
         \includegraphics[width=\linewidth]{images/ogcolors_reconstructed_12hz.png}
         \\[0.5em] 
     \end{minipage}
     \caption{Frequency domain representation of sampled signal at 12 Hz (top), and the reconstructed signal (bottom). 
-    The orange dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
+    The pink dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
 \end{figure}
-Here, the sampling frequency is above the Shannon-Nyquist threshold, and we can see that both of the frequency components of the original signal (2.5 and 5 Hz) are contained within the filtering bound -- which in this case is at $\frac{12}{2}=6$ Hz. 
+Here, the sampling frequency is above the Shannon-Nyquist threshold, and we can see that both of the frequency components of the original signal (2.5 and 5 Hz) are contained within the filtering bound -- which in this case is at $ \pm \frac{12}{2}= \pm 6$ Hz. 
 Because sampling replicates the original spectrum $X(f)$ at every integer multiple of $f_s$, we do not see any frequencies fold when $f_s > 2B$ as the integer multiples are larger than the bandwidth of the original signal.
 Therefore, when the low pass filter is applied, the signal's original frequencies will be recovered and the signal will be perfectly reconstructed, as can be seen in the bottom plot of Figure 5.
 The slight inconsistencies are due to numerical errors in truncating infinite sums.
@@ -354,17 +357,17 @@ Figure 6 shows the frequency domain representation of the signal sampled at 7 Hz
     \centering
     \begin{minipage}{\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{images/orange_freqdom_7hz.png}
+        \includegraphics[width=\linewidth]{images/pink_freqdom_7hz.png}
         \includegraphics[width=\linewidth]{images/ogcolors_reconstructed_7hz.png}
         \\[0.5em] 
     \end{minipage}
     \caption{Frequency domain representation of sampled signal at 7 Hz (top), and the reconstructed signal (bottom). 
-    The orange dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
+    The pink dotted lines represent the low pass filter cutoff frequencies $\pm \frac{f_s}{2}$.}
 \end{figure}
 
-In the frequency domain plot (top), we can see that the low pass filter bounds are $\pm 3$ Hz.
+In the frequency domain plot (top), we can see that the low pass filter bounds are $\pm 3.5$ Hz.
 This means the 5 Hz frequency component from the original signal lies outside the filter range and is therefore not captured.
-Moreover, we also observe folding happening. The $5$ Hz frequency is folded back on $f_s = 7$ Hz, landing on $-2$ Hz. 
+Moreover, we also observe folding happening. The $5$ Hz frequency is folded back on $f_s = 7$ Hz, landing on $5-7=-2$ Hz. 
 Similarly, the $-5$ Hz frequency also folds back and lands on $-5+7=2$ Hz. This is why we see the $\pm 2$ Hz frequencies within the filtering window.
 When the low pass filter with cutoff frequency $\frac{f_S}{2} = 3.5$ Hz is applied, it captures the 2 and 2.5 Hz frequencies, reconstructing an incorrect signal, as seen in the bottom plot of Figure 6.
 
@@ -401,8 +404,11 @@ When the low pass filter with cutoff frequency $\frac{f_S}{2} = 3.5$ Hz is appli
 
 \section{Conclusion}
 %maybe link to why this is important if this sine wave wasnt just this arbitrary sine wave but rather an actual signal that needed to be transmitted/used
-Through this project, we explored the impact of sampling a time continuous signal above and below the Nyquist rate on signal reconstruction.
-%maybe say smth like this is j a toy example so IRL it would be harder to do smth
+Through this project, we explored the impact of sampling a time continuous signal above and below the Nyquist rate.
+We clearly saw that if the sampling theorem is not met, a signal cannot be perfectly reconstructed due to distortions introduced by aliasing.
+
+In various fields, such as audio processing or image reconstruction, signal recovery is essential. 
+Therefore, it is fundamental that the sampling theorem is met in order to avoid distortions and inaccuracies.
 
 \begin{thebibliography}{9}
     \bibitem{citekey} Fiveable. ``Signal Digitization -- Biomedical Engineering II." Edited by Becky Bahr, Fiveable, 2024, https://fiveable.me/key-terms/biomedical-engineering-ii/signal-digitization. Accessed 22 Apr. 2025.
