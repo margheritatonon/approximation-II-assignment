@@ -105,11 +105,11 @@ def sampled_fourier_transform(x_sampled, sampling_freq, num_duplicates, plot = F
     If plot == True, plots the frequency domain plot, and num_duplicates duplicates of the frequency.
     """
     n = len(x_sampled)
-    yf = fft(x_sampled) #the fast fourier transform of the sampled signal
+    yf = fft(x_sampled) #the fast fourier transform of the sampled signal (magnitude and phase, complex number)
     xf = fftfreq(n, 1 / sampling_freq) #the corresponding frequencies of the sampled signal
 
     if plot == True:
-        magnitude = np.abs(yf) #the modulus of the fourier transform of the sampled signal
+        magnitude = np.abs(yf) #the modulus of the fourier transform of the sampled signal, in order to access the magnitude
         #for better visualization:
         xf_shifted = fftshift(xf) #rearranges the frequncies so that 0 is in the center
         magnitude_shifted = fftshift(magnitude) #rearranged magnitudes so 0 is in th center to match xf_shifted
