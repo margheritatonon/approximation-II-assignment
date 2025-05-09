@@ -44,17 +44,17 @@ def left_right_signal(x, t, fs, plot = False):
         fig, axs = plt.subplots(1, 2, figsize=(14, 5))
 
         axs[0].plot(t, x, label="Original", color='blue')
-        axs[0].set_title(f"Original Signal ({frequency} Hz)", fontsize=20)
-        axs[0].set_xlabel("Time (s)", fontsize=14)
-        axs[0].set_ylabel("Amplitude", fontsize=14)
+        axs[0].set_title(f"Original Signal ({frequency} Hz)", fontsize=25)
+        axs[0].set_xlabel("Time (s)", fontsize=18)
+        axs[0].set_ylabel("Amplitude", fontsize=18)
         axs[0].axhline(0, ls = "--", color="gray")
         axs[0].grid(True)
         #axs[0].legend()
 
         axs[1].stem(t_sampled, x_sampled, linefmt='r', markerfmt='ro', basefmt='None', label="Sampled")
-        axs[1].set_title(f"Sampled Signal ({sampling_frequency} Hz)", fontsize=20)
-        axs[1].set_xlabel("Time (s)", fontsize=14)
-        axs[1].set_ylabel("Amplitude", fontsize=14)
+        axs[1].set_title(f"Sampled Signal ({sampling_frequency} Hz)", fontsize=25)
+        axs[1].set_xlabel("Time (s)", fontsize=18)
+        #axs[1].set_ylabel("Amplitude", fontsize=14)
         axs[1].axhline(0, ls = "--", color="gray")
         axs[1].grid(True)
         #axs[1].legend()
@@ -116,17 +116,17 @@ def frequency_domain_plot(x_continuous, t_continuous):
 if __name__ == "__main__":
 
     #defining parameters
-    frequency = 5
-    sampling_frequency = 12
+    frequency = 2
+    sampling_frequency = 10
 
     #script import functions
-    t_continuous, x_continuous = generate_signal(2, frequency, signal_type="multiple", plot = False)
+    t_continuous, x_continuous = generate_signal(2, frequency, signal_type="single", plot = False)
     t_sampled, x_sampled = sample_signal(x_continuous, t_continuous, sampling_frequency)
     yf, xf = sampled_fourier_transform(x_sampled, sampling_frequency, num_duplicates = 2)
 
     #functions of the current script
-    filtering(yf, xf, 1, 5, plot = True)
+    filtering(yf, xf, 1, 5, plot = False)
 
-    frequency_domain_plot(x_continuous, t_continuous)
+    #frequency_domain_plot(x_continuous, t_continuous)
 
     left_right_signal(x_continuous, t_continuous, sampling_frequency, plot = True)
