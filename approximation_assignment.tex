@@ -24,7 +24,7 @@ We therefore use sampling, allowing us to convert a continuous-time signal into 
 Nonetheless, one of the factors determining the accuracy of the information content of a sampled signal is the sampling rate. %not sure if i should mention quantization, because i dont mention it at all ever.
 Given that the Shannon-Nyquist theorem, a condition relating to the sampling rate, is met, a signal can be perfectly recovered from its sampled signal. 
 However, if this condition is not met, a signal can no longer be perfectly recovered due to a phenomenon called aliasing [1].
-Here, we will explore the process of recovering a sampled signal, looking at sampling rates that meet and do not meet the conditions for perfect signal recovery.
+In this project, we will explore the process of recovering a sampled signal, looking at sampling rates that meet and do not meet the conditions for perfect signal recovery.
 
 %introduction sentence, context, motivation
 
@@ -57,7 +57,7 @@ After sampling is done, it is natural that the signal must be reconstructed in o
 However, recovery is not always perfect -- the Shannon-Nyquist condition must be met.
 %something along the lines of: the key issue is what must the sampling frequency be in order for a signal to be perfectly reconstructed and recovered?
 
-The Shannon-Nyquist theorem states that a signal can be perfectly reconstructed if the sampling frequency is greater than two times the maximum frequency $B$ of the continuous signal:
+The Shannon-Nyquist theorem states that a signal with limited bandwidth can be perfectly reconstructed if the sampling frequency $f_s$ is greater than two times the maximum frequency $B$ of the continuous signal:
 \begin{center}
     \begin{math}
         f_s > 2B
@@ -116,7 +116,7 @@ and the Poisson summation formula,
 we obtain that 
 \begin{center}
     \begin{math}
-        \mathcal{F}\left(\displaystyle\sum_{-\infty}^{\infty} \delta (t-nT_s)\right) = \frac{1}{T_s} \displaystyle\sum_{k = -\infty}^{\infty} \delta \left( f - \frac{k}{T_s} \right)
+        \mathcal{F}\left(\displaystyle\sum_{n=-\infty}^{\infty} \delta (t-nT_s)\right) = \frac{1}{T_s} \displaystyle\sum_{k = -\infty}^{\infty} \delta \left( f - \frac{k}{T_s} \right)
     \end{math}  
 \end{center}
 We therefore have
@@ -136,22 +136,40 @@ Convolution of a function with a delta function shifts the function by the offse
 
 We can therefore observe how the representation of a sampled signal in the frequency domain is simply the Fourier Transform of the signal, duplicated and shifted to multiples of the sampling frequency.
 
-When recovering the original signal, we assume that the Shannon-Nyquist condition is met. 
-Because $f_s > 2B$, the original signal has to be contained within the range of frequencies $\frac{-f_s}{2}$ and $\frac{f_s}{2}$, as $\frac{-f_s}{2} < -B$ and  $\frac{f_s}{2} > B$. 
-%Because the frequency domain representation of a signal has the frequency of the signal as well as the negative frequency of the signal, we only need to consider the positive frequencies: $0$ to $\frac{f_s}{2}$ Hz. %todo: rephrase
-We therefore apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2} = \frac{1}{2T_s}$.
-In the frequency domain, we would multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the filtered signal.
+When recovering the original signal, we typically to apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2}$. 
+We multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the filtered signal to obtain the recovered signal.
 
-Nonetheless, the frequency domain representation of the sampled signal and the low pass filter highlight the need for the Shannon-Nyquist theorem.
-When filtering a sampled signal, we effectively only see and select the frequencies between $\frac{-f_s}{2}$ to $\frac{f_s}{2}$.
-If $f_s = 2B$, this range becomes $[-B, B]$, and therefore all of the frequency components of the original signal are included.
-However, when $f_s < 2B$, the filter will select frequencies on a range $[-a, a]$, where $a < B$. Clearly, $B$ is not included within this range and we end up missing part of the original spectrum.
-Moreover, we recall that sampling in the frequency domain replicates the original spectrum $X(f)$ at every integer multiple of $f_s$.
-If $f_s$ is too small, some copied frequencies will shift into in the interval $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ -- this is known as folding.
-When filtering, these folded frequencies will be wrongly interpreted as the original signal's frequency, and therefore the original signal will not be reconstructed correctly.
-The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing.
-On the other hand, if $f_s > 2B$, the range $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ fully contains $\left[-B, B \right]$. 
-Because $f_s$ is sufficiently large, the shifted copies will not land inside $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$, and the original signal can be reconstructed perfectly.
+\noindent When we apply this low pass filter, frequencies above $\frac{f_s}{2}$ will not be included in the region considered by the filter, but frequencies below $\frac{f_s}{2}$ will not be attenuated when filtering and thus will be considered as part of the reconstructed signal.
+
+\noindent Each copy of the shifted Fourier transform of the original signal is centered at $kf_s, k \in \mathbb{Z}$. 
+If we consider $k=1$, which is the first copy of the signal to the right of the origin, our copy is contained between $[f_s - B, f_s + B]$.
+Because our original signal has frequencies contained between $-B$ and $B$, in order for the sampled signal spectrum not to fold into the original signal spectrum, we need that $f_s - B > B$ -- which occurs when $f_s > 2B$.
+However, we also require that $f_s - B > \frac{f_s}{2}$ so that this folded frequency is not picked up on when the filter is applied.
+If $f_s > 2B$, it is logical that $f_s - B > \frac{f_s}{2}$ as we subtract something less than $\frac{f_s}{2}$ to $f_s$.
+A similar logic applies when we look at the first copy to the left of the origin, $k=-1$, and consequently applies for all other $k \in \mathbb{Z}$; therefore, if $f_s > 2B$, the sampled signal spectrum will not interfere with the original signal spectrum.
+
+On the other hand, when $f_s < 2B$, the low pass filter not pick up on frequency components $-B$ and $B$ because $\frac{f_s}{2} < B$.
+Additionally, the folded frequencies $f_s - B$, and consequently $-f_s + B$, will be picked up on by the low pass filter, as $f_s - B < \frac{f_s}{2}$ and $-f_s + B > \frac{-f_s}{2}$.
+Therefore, these folded frequencies, which are not frequencies part of the original signal, will be considered when reconstructing the original signal.
+The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing, and causes distortion when reconstructing a signal.
+
+
+%When recovering the original signal, we assume that the Shannon-Nyquist condition is met. 
+%Because $f_s > 2B$, the original signal has to be contained within the range of frequencies $\frac{-f_s}{2}$ and $\frac{f_s}{2}$, as $\frac{-f_s}{2} < -B$ and  $\frac{f_s}{2} > B$. 
+%Because the frequency domain representation of a signal has the frequency of the signal as well as the negative frequency of the signal, we only need to consider the positive frequencies: $0$ to $\frac{f_s}{2}$ Hz. %todo: rephrase
+%We therefore apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2} = \frac{1}{2T_s}$.
+%In the frequency domain, we would multiply this low pass filter with the sampled signal, and then perform an inverse Fourier Transform on the filtered signal.
+
+%Nonetheless, the frequency domain representation of the sampled signal and the low pass filter highlight the need for the Shannon-Nyquist theorem.
+%When filtering a sampled signal, we effectively only see and select the frequencies between $\frac{-f_s}{2}$ to $\frac{f_s}{2}$.
+%If $f_s = 2B$, this range becomes $[-B, B]$, and therefore all of the frequency components of the original signal are included.
+%However, when $f_s < 2B$, the filter will select frequencies on a range $[-a, a]$, where $a < B$. Clearly, $B$ is not included within this range and we end up missing part of the original spectrum.
+%Moreover, we recall that sampling in the frequency domain replicates the original spectrum $X(f)$ at every integer multiple of $f_s$.
+%If $f_s$ is too small, some copied frequencies will shift into in the interval $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ -- this is known as folding.
+%When filtering, these folded frequencies will be wrongly interpreted as the original signal's frequency, and therefore the original signal will not be reconstructed correctly.
+%The process of different frequency components becoming indistinguishable in the sampled signal due to overlapping spectra is known as aliasing.
+%On the other hand, if $f_s > 2B$, the range $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$ fully contains $\left[-B, B \right]$. 
+%Because $f_s$ is sufficiently large, the shifted copies will not land inside $\left[\frac{-f_s}{2}, \frac{f_s}{2}\right]$, and the original signal can be reconstructed perfectly.
 
 %When $f_s < 2B$, the filter will select frequencies between a value larger than $-B$ to a value smaller than $B$. Clearly, $B$ is not contained within this range. 
 %Recalling that sampling in the frequency domain looks like copying and shifting the Fourier transform of the original signal, a small sampling frequency will cause some copied frequencies to land within the range $[\frac{-f_s}{2}, \frac{f_s}{2}]$ -- this is known as folding.
@@ -183,7 +201,7 @@ Because $f_s$ is sufficiently large, the shifted copies will not land inside $\l
 %maybe like one sentence of what the sampling process consists of
 
 To implement the process of sampling in Python, I begin by defining a function \verb|generate_signal| which generates a continuous time signal.
-If the parameter \verb|signal_type| is set to \verb|"single"|, a sine wave of desired frequency is created.
+If the parameter \verb|signal_type| is set to \verb|"single"|, a sine wave of the desired frequency, ``\verb|frequency|'', is created.
 If this parameteris set to \verb|"multiple"|, a sine wave of desired frequency is added to a sine wave with half of the desired frequency. 
 %\begin{lstlisting}[language = Python]
 %\end{lstlisting}
@@ -195,7 +213,7 @@ Users can set the \verb|plot| parameter to \verb|True| if they wish a plot of th
 
 Next, I define the \verb|sample_signal| function, which samples the continuous signal at a specified sampling frequency.
 %code block of sample_signal
-In this code block, I create a new time array \verb|t_sampled|. 
+In this function, I create a new time array \verb|t_sampled|. 
 This array represents the discrete time points of the sampled signal, starting at 0 and ending at $t_e$, with jumps of the sampling period $T_s$.
 %for the sampled signal using the sampling period, representing the new set of discrete time points. 
 Next, I use \verb|np.interp| to perform the sampling of the original signal \verb|x| at the time points in the \verb|t_sampled| array.
@@ -215,7 +233,8 @@ If the \verb|plot| parameter is set to \verb|True|, a plot of the frequencies of
 Finally, I define the \verb|reconstruction| function, which reconstructs the original signal from the sampled signal.
 This function takes as inputs the array of the amplitudes of the sampled signal, \verb|x_sampled|, and the time array of the sampled signal, \verb|t_sampled|.
 If users wish to plot the reconstructed signal together with the original signal, they must set the \verb|plot| parameter to \verb|True| and provide the original signal \verb|x_continuous| as well as the continuous time array \verb|t_s|.
-In this function, I reconstruct the signal in the time domain using the sinc function.
+
+\noindent In this function, I reconstruct the signal in the time domain using the sinc function.
 Previously, we mentioned that we must apply a low pass filter with cutoff frequency $f_l = \frac{f_s}{2}$ to recover the signal.
 The convolution theorem states that if $x(t)$ and $h(t)$ are two absolutely integrable functions in $\mathcal{L}^1$, and if their Fourier transforms $X(f) = \mathcal{F}(x(t))$ and $H(f) = \mathcal{F}(h(t))$ exist and are well defined,
 \begin{center}
@@ -256,6 +275,7 @@ However, because it is not possible to compute an infinite sum numerically, I mu
 \end{center}
 where $F_s = \frac{1}{T_s}$ and $x[n]$ is the value of the signal at the $n$-th sampling point.
 
+\newpage 
 \section{Discussion}
 %results of code
 %different initial frequencies, different sampling frequencies based on shannon nyquist thm
@@ -325,7 +345,7 @@ As expected, the time domain representation of the signal sampled at 12 Hz has m
 %this is the expected behaviour as a sampling frequency of 12 Hz 
 %this is the expected behaviour as 12 Hz being a higher sampling frequency than 7 Hz means that the signal is sampled more times across a given time interval (here being 2 seconds). 
 
-In the frequency domain, the original continuous time signal looks like four spikes at $5$, $-5$, $2.5$, and $-2.5$ Hz (Figure 4).
+In the frequency domain, the original continuous time signal looks like four spikes at $5$ Hz, $-5$ Hz, $2.5$ Hz, and $-2.5$ Hz (Figure 4).
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{images/freqdom_timecont_black.png}
     \caption{Frequency domain representation of the continuous time signal.}
@@ -369,7 +389,7 @@ In the frequency domain plot (top), we can see that the low pass filter bounds a
 This means the 5 Hz frequency component from the original signal lies outside the filter range and is therefore not captured.
 Moreover, we also observe folding happening. The $5$ Hz frequency is folded back on $f_s = 7$ Hz, landing on $5-7=-2$ Hz. 
 Similarly, the $-5$ Hz frequency also folds back and lands on $-5+7=2$ Hz. This is why we see the $\pm 2$ Hz frequencies within the filtering window.
-When the low pass filter with cutoff frequency $\frac{f_S}{2} = 3.5$ Hz is applied, it captures the 2 and 2.5 Hz frequencies, reconstructing an incorrect signal, as seen in the bottom plot of Figure 6.
+When the low pass filter with cutoff frequency $\frac{f_S}{2} = 3.5$ Hz is applied, it captures the $\pm 2$ Hz and $\pm 2.5$ Hz frequencies, reconstructing an incorrect signal, as seen in the bottom plot of Figure 6.
 
 
 %Figure 5 shows the frequency domain representation of the sampled signal at different sampling frequencies. 
